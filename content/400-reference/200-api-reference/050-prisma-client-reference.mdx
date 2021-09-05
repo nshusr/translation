@@ -1,14 +1,14 @@
 ---
-title: 'Prisma Client API reference'
-metaTitle: 'Prisma Client API (Reference)'
-metaDescription: 'API reference documentation for Prisma Client.'
+title: 'Prisma Client API 参考'
+metaTitle: 'Prisma Client API (参考)'
+metaDescription: 'Prisma Client API 参考文档'
 tocDepth: 2
 toc: true
 ---
 
 <TopBlock>
 
-The Prisma Client API reference documentation is based on the following schema:
+Prisma Client API 参考文档是基于以下架构的：
 
 ```prisma
 model User {
@@ -49,36 +49,36 @@ enum Role {
 }
 ```
 
-All example generated types (such as `UserSelect` and `UserWhereUniqueInput`) are based on the `User` model.
+所有生成的示例类型（如`UserSelect`和`UserWhereUniqueInput`）都基于`User`模型。
 
 </TopBlock>
 
 ## <inlinecode>PrismaClient</inlinecode>
 
-This section describes the `PrismaClient` constructor and its parameters.
+这一小节描述了`PrismaClient`构造函数和其参数。
 
-### Remarks
+### 备注
 
-- Parameters are validated at runtime.
+- 参数是在运行时进行验证。
 
-### <inlinecode>datasources</inlinecode>
+### <inlinecode>数据源(datasource)</inlinecode>
 
-Programmatically overrides properties of the `datasource` block in the `schema.prisma` file - for example, as part of an integration test. See also: [Data sources](../../../concepts/components/prisma-schema/data-sources) <span class="concept"></span>
+修改`schema.prisma`文件中的`datasource`部分 - 例如，作为一个集成测试的一部分。参见[数据源](../../../concepts/components/prisma-schema/data-sources) <span class="concept"></span>
 
-#### Properties
+#### 属性
 
-| Example property | Example value                 | Description                                                           |
-| ---------------- | ----------------------------- | --------------------------------------------------------------------- |
-| `db`             | `{ url: 'file:./dev_qa.db' }` | The database [connection URL](../database-reference/connection-urls). |
+| 属性 | 值                            | 描述                                                      |
+| ---- | ----------------------------- | --------------------------------------------------------- |
+| `db` | `{ url: 'file:./dev_qa.db' }` | 数据库 [连接地址](../database-reference/connection-urls). |
 
-#### Remarks
+#### 备注
 
-- You must re-generate the Prisma Client each time you add or rename a data source. Datasource names are included in the generated client.
-- If you named your `datasource` block something else in the schema, replace `db` with the name of your `datasource` block.
+- 每次添加或重命名数据源时，都需要重新生成 Prisma Client。数据源名称包含在生成的客户端中。
+- 如果你往 schema 中添加了一个新的数据源，那么你需要重新生成客户端。
 
-#### Examples
+#### 例子
 
-##### Programmatically override a datasource `url`
+##### 修改 数据源(datasource) `url`
 
 ```ts
 import { PrismaClient } from '@prisma/client'
@@ -92,7 +92,7 @@ const prisma = new PrismaClient({
 })
 ```
 
-Based on the following `datasource` block:
+基于以下`datasource`代码:
 
 ```prisma
 datasource db {
@@ -101,34 +101,34 @@ datasource db {
 }
 ```
 
-### <inlinecode>log</inlinecode>
+### <inlinecode>日志</inlinecode>
 
-Determines the type and level of logging. See also: [Logging](../../../concepts/components/prisma-client/working-with-prismaclient/logging) <span class="concept"></span>
+确定日志类型和级别。参见[日志](../../../concepts/components/prisma-client/working-with-prismaclient/logging) <span class="concept"></span>
 
-#### Options
+#### 选项
 
-| Option                   | Example                                                                  | Description |
-| ------------------------ | ------------------------------------------------------------------------ | ----------- |
-| Array of log levels      | `[ "info", "query" ]`                                                    |             |
-| Array of log definitions | `[ { level: "info", emit: "event" }, { level: "warn", emit: "stdout" }]` |             |
+| 选项     | 例子                                                                     | 描述 |
+| -------- | ------------------------------------------------------------------------ | ---- |
+| 日志级别 | `[ "info", "query" ]`                                                    |      |
+| 定义级别 | `[ { level: "info", emit: "event" }, { level: "warn", emit: "stdout" }]` |      |
 
-##### Log levels
+##### 日志级别
 
-| Name    | Example                                                                                                                                                                                                                                                                                                                     |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `query` | Example: <br />`prisma:query SELECT "public"."User"."id", "public"."User"."email" FROM "public"."User" WHERE ("public"."User"."id") IN (SELECT "t0"."id" FROM "public"."User" AS "t0" INNER JOIN "public"."Post" AS "j0" ON ("j0"."authorId") = ("t0"."id") WHERE ("j0"."views" > $1 AND "t0"."id" IS NOT NULL)) OFFSET $2` |
-| `info`  | Example: <br />`prisma:info Started http server on http://127.0.0.1:58471`                                                                                                                                                                                                                                                  |
-| `warn`  | Warnings.                                                                                                                                                                                                                                                                                                                   |
-| `error` | Errors.                                                                                                                                                                                                                                                                                                                     |
+| 名称    | 例子                                                                                                                                                                                                                                                                                                                     |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `query` | 例子: <br />`prisma:query SELECT "public"."User"."id", "public"."User"."email" FROM "public"."User" WHERE ("public"."User"."id") IN (SELECT "t0"."id" FROM "public"."User" AS "t0" INNER JOIN "public"."Post" AS "j0" ON ("j0"."authorId") = ("t0"."id") WHERE ("j0"."views" > $1 AND "t0"."id" IS NOT NULL)) OFFSET $2` |
+| `info`  | 例子: <br />`prisma:info Started http server on http://127.0.0.1:58471`                                                                                                                                                                                                                                                  |
+| `warn`  | 警告。                                                                                                                                                                                                                                                                                                                   |
+| `error` | 错误。                                                                                                                                                                                                                                                                                                                   |
 
-##### Emit formats
+##### 触发格式
 
-| Name     | Description                                                   |
-| -------- | ------------------------------------------------------------- |
-| `stdout` | See: [stdout](https://en.wikipedia.org/wiki/Standard_streams) |
-| `event`  | Raises an event that you can subscribe to.                    |
+| 名称     | 描述                                                           |
+| -------- | -------------------------------------------------------------- |
+| `stdout` | 参见: [stdout](https://en.wikipedia.org/wiki/Standard_streams) |
+| `event`  | 触发你可以订阅的事件。                                         |
 
-#### Reference
+#### 参考
 
 ```ts file=index.d.ts
 log?: Array<LogLevel | LogDefinition>
@@ -142,21 +142,21 @@ export type LogDefinition = {
 }
 ```
 
-##### Event types
+##### 事件类型
 
-The `query` event type:
+`query` 类型:
 
 ```ts file=index.d.ts
 export type QueryEvent = {
   timestamp: Date
-  query: string // Query sent to the database
-  params: string // Query parameters
-  duration: number // Time elapsed (in milliseconds) between client issuing query and database responding - not only time taken to run query
+  query: string // 查询发送到数据库
+  params: string // 查询参数
+  duration: number // 客户端发送查询到数据库的时间间隔 - 不仅是执行查询所需的时间
   target: string
 }
 ```
 
-All other log level event types:
+其他日志级别事件类型:
 
 ```ts file=index.d.ts
 export type LogEvent = {
@@ -166,9 +166,9 @@ export type LogEvent = {
 }
 ```
 
-#### Examples
+#### 例子
 
-##### Log `query` and `info` to `stdout`
+##### 将 `query` 和 `info` 日志记录到 `stdout`
 
 <CodeWithResult>
 
@@ -206,7 +206,7 @@ prisma:query SELECT COUNT(*) FROM (SELECT "public"."User"."id" FROM "public"."Us
 
 </CodeWithResult>
 
-##### Log a `query` event to console
+##### 将 `query` 事件记录到控制台
 
 <CodeWithResult>
 <cmd>
@@ -253,7 +253,7 @@ main()
 
 </CodeWithResult>
 
-##### Log `info`, `warn`, and `error` events to console
+##### 将 `info`, `warn`, 和 `error` 事件记录到控制台
 
 <CodeWithResult>
 <cmd>
@@ -313,20 +313,20 @@ main()
 </cmdResult>
 </CodeWithResult>
 
-### <inlinecode>errorFormat</inlinecode>
+### <inlinecode>错误格式化</inlinecode>
 
-Determines the level and formatting of errors returned by Prisma.
+确定 Prisma 返回的错误级别和格式。
 
-#### Error formats
+#### 格式化
 
-| Name                  | Description                                    |
-| --------------------- | ---------------------------------------------- |
-| `undefined`           | If it's not defined, the default is colorless. |
-| `pretty`              | Enables pretty error formatting.               |
-| `colorless` (default) | Enables colorless error formatting.            |
-| `minimal`             | Enables minimal error formatting.              |
+| 名称                  | 描述                       |
+| --------------------- | -------------------------- |
+| `undefined`           | 如果未定义，则默认为无色。 |
+| `pretty`              | 开启 pretty 格式化。       |
+| `colorless` (default) | 开启 colorless 格式化。    |
+| `minimal`             | 开启 minimal 格式化。      |
 
-#### Reference
+#### 参考
 
 ```ts file=index.d.ts
 errorFormat?: ErrorFormat
@@ -336,17 +336,17 @@ errorFormat?: ErrorFormat
 export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
 ```
 
-#### Examples
+#### 例子
 
-##### No error formatting
+##### 不设置格式
 
 ```ts
 const prisma = new PrismaClient({
-  // Defaults to colorless
+  // 默认使用 colorless 格式
 })
 ```
 
-##### `pretty` error formatting
+##### `pretty` 格式
 
 ```ts
 const prisma = new PrismaClient({
@@ -354,7 +354,7 @@ const prisma = new PrismaClient({
 })
 ```
 
-##### `colorless` error formatting
+##### `colorless` 格式
 
 ```ts
 const prisma = new PrismaClient({
@@ -362,7 +362,7 @@ const prisma = new PrismaClient({
 })
 ```
 
-##### `minimal` error formatting
+##### `minimal` 格式
 
 ```ts
 const prisma = new PrismaClient({
@@ -372,28 +372,28 @@ const prisma = new PrismaClient({
 
 ### <inlinecode>rejectOnNotFound</inlinecode>
 
-Use the `rejectOnNotFound` parameter to configure `findUnique` and/or `findFirst` to throw an error if the record was not found. By default, both operations return `null` if the record is not found.
+使用 `rejectOnNotFound` 参数配置 `findUnique` 和/或 `findFirst` 如果记录未找到，则抛出错误。默认情况下。两个操作都返回 `null`。
 
-### Remarks
+### 备注
 
-- You can configure `rejectOnNotFound` on a per-request level for both [`findUnique`](#findunique) and [`findFirst`](#findfirst)
+- 你可以配置 `rejectOnNotFound` 在每个请求级别，对于 [`findUnique`](#findunique) 和 [`findFirst`](#findfirst)
 
-#### Options
+#### 选项
 
-| Option               | Description                                                                                 |
-| -------------------- | ------------------------------------------------------------------------------------------- |
-| `RejectOnNotFound`   | Enable globally (`true` / `false`) _or_ throw a custom error.                               |
-| `RejectPerOperation` | Enable per operation (`true` / `false`) _or_ throw a custom error per operation, per model. |
+| 选项                 | 描述                                                                                      |
+| -------------------- | ----------------------------------------------------------------------------------------- |
+| `RejectOnNotFound`   | 全局启用 (`true` / `false`) _或_ 抛出一个自定义错误。                                     |
+| `RejectPerOperation` | 全局启用在操作前开启 (`true` / `false`) _或_ 每个操作前抛出一个自定义错误，按模型(Model). |
 
-#### Reference
+#### 参考
 
 ```ts file=index.d.ts
 rejectOnNotFound?: RejectOnNotFound | RejectPerOperation
 ```
 
-#### Examples
+#### 例子
 
-##### Enable globally for `findUnique` and `findFirst`
+##### 全局启用 `findUnique` 和 `findFirst`
 
 ```ts
 const prisma = new PrismaClient({
@@ -401,7 +401,7 @@ const prisma = new PrismaClient({
 })
 ```
 
-##### Enable globally for a specific operation
+##### 为特定操作全局启用
 
 ```ts
 const prisma = new PrismaClient({
@@ -411,7 +411,7 @@ const prisma = new PrismaClient({
 })
 ```
 
-##### Throw a custom error per model and operation if record is not found
+##### 如果未找到记录，则为每个模型和操作抛出自定义错误
 
 ```ts
 const prisma = new PrismaClient({
@@ -428,44 +428,44 @@ const prisma = new PrismaClient({
 })
 ```
 
-## Model queries
+## 模型查询 (Model queries)
 
-Use model queries to perform CRUD operations on your models. See also: [CRUD](../../../concepts/components/prisma-client/crud) <span class="concept"></span>
+使用模型查询来执行 CRUD 操作。参见 [CRUD](../../../concepts/components/prisma-client/crud) <span class="concept"></span>
 
 ### <inlinecode>findUnique</inlinecode>
 
-`findUnique` query lets you retrieve a single database record:
+`findUnique` 查询 使用唯一条件来获取单个数据库记录：
 
-- By _ID_
-- By a _unique_ attribute
+- 按 _ID_
+- 按 _唯一_(_unique_) 属性
 
-`findUnique` replaced `findOne` in version [2.12.0](https://github.com/prisma/prisma/releases/tag/2.12.0).
+`findUnique` 替代 `findOne` 在 [2.12.0](https://github.com/prisma/prisma/releases/tag/2.12.0) 版本后。
 
-#### Remarks
+#### 备注
 
-- Prisma's dataloader [automatically batches `findUnique` queries](../../guides/performance-and-optimization/query-optimization-performance#solving-n1-in-graphql-with-findunique-and-prismas-dataloader) with the same `select` and `where` parameters
+- Prisma 的 `dataloader` [自动批处理 `findUnique` 查询](../../guides/performance-and-optimization/query-optimization-performance#solving-n1-in-graphql-with-findunique-and-prismas-dataloader) 具有相同的 `select` 和 `where` 参数
 
-#### Options
+#### 选项
 
-| Name               | Example type (`User`)    | Required | Description                                                                                                                            |
-| ------------------ | ------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`            | `UserWhereUniqueInput`   | **Yes**  | Wraps all _unique_ fields of a model so that individual records can be selected.                                                       |
-| `select`           | `XOR<UserSelect, null>`  | No       | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                 |
-| `include`          | `XOR<UserInclude, null>` | No       | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object. |
-| `rejectOnNotFound` | `RejectOnNotFound`       | No       | If true, throw a `NotFoundError: No User found error`. You can also [configure `rejectOnNotFound` globally](#rejectonnotfound).        |
+| 名称               | 示例类型 (`User`)        | 必填   | 描述                                                                                                                       |
+| ------------------ | ------------------------ | ------ | -------------------------------------------------------------------------------------------------------------------------- |
+| `where`            | `UserWhereUniqueInput`   | **是** | 包含模型的所有唯一字段，以便可以选择各个记录。                                                                             |
+| `select`           | `XOR<UserSelect, null>`  | 否     | 指定返回的对象[要包含的属性](../../concepts/components/prisma-client/select-fields)。                                      |
+| `include`          | `XOR<UserInclude, null>` | 否     | 指定返回的对象[要加载的关系](../../concepts/components/prisma-client/relation-queries)。                                   |
+| `rejectOnNotFound` | `RejectOnNotFound`       | 否     | 如果为 true, 抛出一个 `NotFoundError: No User found error`. 你也可以 [配置开启全局 `rejectOnNotFound`](#rejectonnotfound). |
 
-#### Return type
+#### 返回类型
 
-| Return type               | Example                    | Description                                                                                                                                                      |
-| ------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| JavaScript object (typed) | `User`                     |                                                                                                                                                                  |
-| JavaScript object (plain) | `{ title: "Hello world" }` | Use `select` and `include` to determine which fields to return.                                                                                                  |
-| `null`                    | `null`                     | Record not found                                                                                                                                                 |
-| Error                     |                            | If `rejectOnNotFound` is true, `findUnique` throws an error (`NotFoundError` by default, [customizable globally](#rejectonnotfound)) insted of returning `null`. |
+| 返回类型                  | 例子                       | 描述                                                                                                                              |
+| ------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript object (typed) | `User`                     |                                                                                                                                   |
+| JavaScript object (plain) | `{ title: "Hello world" }` | 使用 `select` 和 `include` 来确定要返回的字段                                                                                     |
+| `null`                    | `null`                     | 未找到记录                                                                                                                        |
+| Error                     |                            | 如果 `rejectOnNotFound` 为 true, `findUnique` 则抛出错误 (`NotFoundError` 为默认, [可全局自定义](#rejectonnotfound)) 返回 `null`. |
 
-#### Reference
+#### 参考
 
-`findUnique` accepts the following input type:
+`findUnique` 接受以下输入类型:
 
 ```ts file=index.d.ts
 export type UserFindUniqueArgs = {
@@ -475,9 +475,9 @@ export type UserFindUniqueArgs = {
 }
 ```
 
-#### Examples
+#### 例子
 
-##### Get the `User` record with an `id` of `42`
+##### 获取 `id` 为 `42` 的 `User` 记录
 
 ```ts
 const result = await prisma.user.findUnique({
@@ -487,7 +487,7 @@ const result = await prisma.user.findUnique({
 })
 ```
 
-##### Get the `User` record with an `email` of `alice@prisma.io`
+##### 获取 `email` 为 `alice@prisma.io` 的 `User` 记录
 
 ```ts
 const result = await prisma.user.findUnique({
@@ -497,9 +497,9 @@ const result = await prisma.user.findUnique({
 })
 ```
 
-##### Get the `User` record with `firstName` of `Alice` and `lastName` of `Smith` (`@@unique`)
+##### 获取 `firstName` 为 `Alice` 并且 `lastName` 为 `Smith` (`@@unique`) 的 `User` 记录
 
-<details><summary>Expand for example User model with a @@unique block</summary>
+<details><summary>展开示例：User 模型使用 @@unique</summary>
 
 ```prisma
 model User {
@@ -516,7 +516,7 @@ model User {
 const result = await prisma.user.findUnique({
   where: {
     fullname: {
-      // name property of @@unique attribute - default is firstname_lastname
+      // name 属性的 @@unique 属性 - 默认为 firstname_lastname
       firstName: 'Alice',
       lastName: 'Smith',
     },
@@ -524,9 +524,9 @@ const result = await prisma.user.findUnique({
 })
 ```
 
-##### Get the `User` record with `firstName` of `Alice` and `lastName` of `Smith` (`@@id`)
+##### 获取 `firstName` 为 `Alice` 并且 `lastName` 为 `Smith` (`@@id`) 的 `User` 记录
 
-<details><summary>Expand for example User model with an @@id block</summary>
+<details><summary>展开示例 User 模型为使用 @@id</summary>
 
 ```prisma
 model User {
@@ -552,39 +552,39 @@ const result = await prisma.user.findUnique({
 
 ### <inlinecode>findFirst</inlinecode>
 
-`findFirst` returns the first record in a list that matches your criteria.
+`findFirst` 返回第一个匹配您的条件的记录。
 
-#### Options
+#### 选项
 
-| Name               | Example type (`User`)                                        | Required | Description                                                                                                                                                                                                                                |
-| ------------------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `distinct`         | `Enumerable<UserDistinct`<br />`FieldEnum>`                  | No       | Lets you filter out duplicate rows by a specific field - for example, return only distinct `Post` titles.                                                                                                                                  |
-| `where`            | `UserWhereInput`                                             | No       | Wraps _all_ model fields in a type so that the list can be filtered by any property.                                                                                                                                                       |
-| `cursor`           | `UserWhereUniqueInput`                                       | No       | Specifies the position for the list (the value typically specifies an `id` or another unique value).                                                                                                                                       |
-| `orderBy`          | `XOR<Enumerable<User`<br />`OrderByInput>,UserOrderByInput>` | No       | Lets you order the returned list by any property.                                                                                                                                                                                          |
-| `include`          | `XOR<UserInclude, null>`                                     | No       | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object.                                                                                                     |
-| `select`           | `XOR<UserSelect, null>`                                      | No       | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                                                                                                                     |
-| `skip`             | `number`                                                     | No       | Specifies how many of the returned objects in the list should be skipped.                                                                                                                                                                  |
-| `take`             | `number`                                                     | No       | Specifies how many objects should be returned in the list. When used with `findFirst`, `take` is implicitly `1` or `-1`. `findFirst` is only affected by whether the value is positive or negative - any negative value reverses the list. |
-| `rejectOnNotFound` | `RejectOnNotFound`                                           | No       | If true, throw a `NotFoundError: No User found error`. You can also [configure `rejectOnNotFound` globally](#rejectonnotfound).                                                                                                            |
+| 名称               | 示例类型 (`User`)                                            | 必填 | 描述                                                                                                                                                  |
+| ------------------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `distinct`         | `Enumerable<UserDistinct`<br />`FieldEnum>`                  | 否   | 允许您按特定的字段来过滤掉重复的行。 - 例如仅返回不同标题的“帖子”。                                                                                   |
+| `where`            | `UserWhereInput`                                             | 否   | 将模型所有字段包装在一个类型中，以便可以通过任何属性过滤列。表。                                                                                      |
+| `cursor`           | `UserWhereUniqueInput`                                       | 否   | 指定列表的位置（该值通常指定一个 `id` 或其他唯一值）。                                                                                                |
+| `orderBy`          | `XOR<Enumerable<User`<br />`OrderByInput>,UserOrderByInput>` | 否   | 允许您按任何属性对返回的列表进行排序。                                                                                                                |
+| `include`          | `XOR<UserInclude, null>`                                     | 否   | [指定急切加载哪些关系](../../concepts/components/prisma-client/relation-queries) 在返回的对象上。                                                     |
+| `select`           | `XOR<UserSelect, null>`                                      | 否   | [指定要包含的属性](../../concepts/components/prisma-client/select-fields) 在返回的对象上。                                                            |
+| `skip`             | `number`                                                     | 否   | 指定应跳过列表中返回的对象的数量。                                                                                                                    |
+| `take`             | `number`                                                     | 否   | 指定应在列表中返回多少个对象。当与 `findFirst` 一起使用时，`take` 隐式为 `1` 或 `-1`。 `findFirst` 仅受值是正值还是负值的影响 -任何负值都会反转列表。 |
+| `rejectOnNotFound` | `RejectOnNotFound`                                           | 否   | 如果为 true, 则抛出“NotFoundError: No User found error”。 您还可以[全局配置`rejectOnNotFound`](#rejectonnotfound)。                                   |
 
-#### Return type
+#### 返回类型
 
-| Return type               | Example                    | Description                                                                                                                                                      |
-| ------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| JavaScript object (typed) | `User`                     | Specifies which properties to include on the returned object.                                                                                                    |
-| JavaScript object (plain) | `{ title: "Hello world" }` | Use `select` and `include` to determine which fields to return.                                                                                                  |
-| `null`                    | `null`                     | Record not found                                                                                                                                                 |
-| Error                     |                            | If `rejectOnNotFound` is true, `findUnique` throws an error (`NotFoundError` by default, [customizable globally](#rejectonnotfound)) insted of returning `null`. |
+| 返回类型                  | 例子                       | 描述                                                                                                                                                 |
+| ------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript object (typed) | `User`                     | 指定要在返回的对象上包含哪些属性。                                                                                                                   |
+| JavaScript object (plain) | `{ title: "Hello world" }` | 使用 `select` 和 `include` 来确定要返回的字段。                                                                                                      |
+| `null`                    | `null`                     | 记录不存在                                                                                                                                           |
+| Error                     |                            | 如果 `rejectOnNotFound` 为 true，`findUnique` 会抛出一个错误（默认情况下为 `NotFoundError`，[全局可自定义](#rejectonnotfound)），而不是返回 `null`。 |
 
-#### Remarks
+#### 注意
 
-- `findFirst` calls `findMany` behind the scenes and accepts the same query options.
-- Passing in a negative `take` value when you use a `findFirst` query reverses the order of the list.
+- `findFirst` 在幕后调用 `findMany` 并接受相同的查询选项。
+- 当您使用 `findFirst` 查询时传递一个负的 `take` 值会颠倒列表的顺序。
 
-#### Reference
+#### 参考
 
-`findFirst` accepts the following input type:
+`findFirst` 接受以下输入类型:
 
 ```ts file=index.d.ts
 export type UserFindFirstArgs = {
@@ -600,11 +600,11 @@ export type UserFindFirstArgs = {
 }
 ```
 
-#### Examples
+#### 例子
 
-See [Filter conditions and operators](#filter-conditions-and-operators) for examples of how to filter results.
+参见[过滤条件和运算符](#filter-conditions-and-operators)以例子查看过滤结果。
 
-##### Get the first `User` record where the `name` is `Alice`
+##### 获取 `name` 字段为 `Alice` 的第一个 `User` 记录
 
 ```ts
 const user = await prisma.user.findFirst({
@@ -612,7 +612,7 @@ const user = await prisma.user.findFirst({
 })
 ```
 
-##### Get the first `Post` record where the `title` starts with `A test`, reverse the list with `take`
+##### 获取 `title` 字段以 `A test` 开头的第一个 `Post` 记录，并反转列表（`take`）
 
 ```ts
 import { PrismaClient } from '@prisma/client'
@@ -641,7 +641,7 @@ async function main() {
     orderBy: {
       title: 'asc',
     },
-    take: -1, // Reverse the list
+    take: -1, // 反转列表
   })
 }
 
@@ -652,32 +652,32 @@ main()
 
 <AlgoliaTerm name="apiReference" value="findMany" />
 
-`findMany` returns a list of records.
+`findMany` 接受一个查询选项，并返回一个列表。
 
-#### Options
+#### 选项
 
-| Name       | Type                                                          | Required | Description                                                                                                                                                                                               |
-| ---------- | ------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`    | `UserWhereInput`                                              | No       | Wraps _all_ model fields in a type so that the list can be filtered by any property.                                                                                                                      |
-| `orderBy`  | `XOR<Enumerable<PostOrder`<br />`ByInput>, PostOrderByInput>` | No       | Lets you order the returned list by any property.                                                                                                                                                         |
-| `skip`     | `number`                                                      | No       | Specifies how many of the returned objects in the list should be skipped.                                                                                                                                 |
-| `cursor`   | `UserWhereUniqueInput`                                        | No       | Specifies the position for the list (the value typically specifies an `id` or another unique value).                                                                                                      |
-| `take`     | `number`                                                      | No       | Specifies how many objects should be returned in the list (as seen from the _beginning_ (positive value) or _end_ (negative value) **either** of the list **or** from the `cursor` position if mentioned) |
-| `select`   | `XOR<PostSelect, null>`                                       | No       | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                                                                                    |
-| `include`  | `XOR<PostInclude, null>`                                      | No       | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object.                                                                    |
-| `distinct` | `Enumerable<UserDistinctFieldEnum>`                           | No       | Lets you filter out duplicate rows by a specific field - for example, return only distinct `Post` titles.                                                                                                 |
+| 名称       | 类型                                                          | 必填 | 描述                                                                                                                   |
+| ---------- | ------------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
+| `where`    | `UserWhereInput`                                              | 否   | 将模型所有字段包装在一个类型中，以便可以通过任何属性过滤列。表。                                                       |
+| `orderBy`  | `XOR<Enumerable<PostOrder`<br />`ByInput>, PostOrderByInput>` | 否   | 允许您按任何属性对返回的列表进行排序。                                                                                 |
+| `skip`     | `number`                                                      | 否   | 指定应跳过列表中返回的对象的数量。                                                                                     |
+| `cursor`   | `UserWhereUniqueInput`                                        | 否   | 指定列表开始的位置（该值通常指定一个 id 或其他唯一值）。                                                               |
+| `take`     | `number`                                                      | 否   | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）来看，或者从 `cursor` 位置（如果提到的话）。 |
+| `select`   | `XOR<PostSelect, null>`                                       | 否   | [指定要包含的属性](../../concepts/components/prisma-client/select-fields) 在返回的对象上。                             |
+| `include`  | `XOR<PostInclude, null>`                                      | 否   | [指定急切加载哪些关系](../../concepts/components/prisma-client/relation-queries) 在返回的对象上。                      |
+| `distinct` | `Enumerable<UserDistinctFieldEnum>`                           | 否   | 允许您按特定的字段来过滤掉重复的行。 - 例如仅返回不同标题的“帖子”。                                                    |
 
-#### Return type
+#### 返回类型
 
-| Return type                     | Example                      | Description                                                     |
-| ------------------------------- | ---------------------------- | --------------------------------------------------------------- |
-| JavaScript array object (typed) | `User[]`                     |                                                                 |
-| JavaScript array object (plain) | `[{ title: "Hello world" }]` | Use `select` and `include` to determine which fields to return. |
-| Empty array                     | `[]`                         | No matching records found.                                      |
+| 返回类型                        | 例子                         | 描述                                            |
+| ------------------------------- | ---------------------------- | ----------------------------------------------- |
+| JavaScript array object (typed) | `User[]`                     |                                                 |
+| JavaScript array object (plain) | `[{ title: "Hello world" }]` | 使用 `select` 和 `include` 来确定要返回的字段。 |
+| Empty array                     | `[]`                         | 没有找到匹配的记录。                            |
 
-#### Reference
+#### 参考
 
-`findMany` accepts the following input type:
+`findMany` 接受以下输入类型:
 
 ```ts file=index.d.ts
 export type UserFindManyArgs = {
@@ -692,11 +692,11 @@ export type UserFindManyArgs = {
 }
 ```
 
-#### Examples
+#### 例子
 
-See [Filter conditions and operators](#filter-conditions-and-operators) for examples of how to filter results.
+参见 [过滤条件和运算符](#filter-conditions-and-operators) 以获取更多示例。
 
-##### Get all `User` records where the `name` is `Alice`
+##### 获取所有 `User` 记录，其中 `name` 字段的值为 `Alice`
 
 ```ts
 const user = await prisma.user.findMany({
@@ -706,30 +706,30 @@ const user = await prisma.user.findMany({
 
 ### <inlinecode>create</inlinecode>
 
-`create` creates a new database record.
+`create` 创建一个新的数据库记录。
 
-#### Options
+#### 选项
 
-| Name                  | Type                                                     | Required | Description                                                                                                                                                                                                                                                                   |
-| --------------------- | -------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`                | `XOR<UserCreateInput,` <br />`UserUncheckedCreateInput>` | **Yes**  | Wraps all the model fields in a type so that they can be provided when creating new records. It also includes relation fields which lets you perform (transactional) nested inserts. Fields that are marked as optional or have default values in the datamodel are optional. |
-| [`select`](#select)   | `XOR<UserSelect, null>`                                  | No       | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                                                                                                                                                        |
-| [`include`](#include) | `XOR<UserInclude, null>`                                 | No       | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object.                                                                                                                                        |
+| 名称                  | 类型                                                     | 必填   | 描述                                                                                                                                                           |
+| --------------------- | -------------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`                | `XOR<UserCreateInput,` <br />`UserUncheckedCreateInput>` | **是** | 将所有模型字段包装在一个类型中，以便在创建新记录时提供它们。它还包括允许您执行（事务性）嵌套插入的关系字段。在数据模型中标记为可选或具有默认值的字段是可选的。 |
+| [`select`](#select)   | `XOR<UserSelect, null>`                                  | 否     | [指定要包含的属性](../../concepts/components/prisma-client/select-fields) 在返回的对象上。                                                                     |
+| [`include`](#include) | `XOR<UserInclude, null>`                                 | 否     | [指定应急切加载哪些关系](../../concepts/components/prisma-client/relation-queries) 在返回的对象上。                                                            |
 
-#### Return type
+#### 返回类型
 
-| Return type               | Example                        | Description                                                     |
-| ------------------------- | ------------------------------ | --------------------------------------------------------------- |
-| JavaScript object (typed) | `User`                         |                                                                 |
-| JavaScript object (plain) | `{ name: "Alice Wonderland" }` | Use `select` and `include` to determine which fields to return. |
+| 返回类型                  | 例子                           | 描述                                            |
+| ------------------------- | ------------------------------ | ----------------------------------------------- |
+| JavaScript object (typed) | `User`                         |                                                 |
+| JavaScript object (plain) | `{ name: "Alice Wonderland" }` | 使用 `select` 和 `include` 来确定要返回的字段。 |
 
-#### Remarks
+#### 注意
 
-- You can also perform a nested [`create`](#create-1) - for example, add a `User` and two `Post` records at the same time.
+- 你可以使用 [`create`](#create-1) 来创建一个嵌套的记录。例如，你可以同时创建一个 `User` 和两个 `Post` 记录。
 
-#### Reference
+#### 参考
 
-`create` accepts the following input type:
+`create` 接受以下输入类型:
 
 ```ts file=index.d.ts
 export type UserCreateArgs = {
@@ -739,9 +739,9 @@ export type UserCreateArgs = {
 }
 ```
 
-#### Examples
+#### 例子
 
-##### Create a single new record with the only required field `email`
+##### 创建一个只有 `email` 字段的新记录
 
 ```ts
 const user = await prisma.user.create({
@@ -749,11 +749,11 @@ const user = await prisma.user.create({
 })
 ```
 
-##### Create multiple new records
+##### 创建多个新记录
 
-Prisma Client does not yet support batch inserts at a database level. Follow [issue #332 on GitHub](https://github.com/prisma/prisma-client-js/issues/332) for updates.
+Prisma Client 不支持在数据库级别批量插入。请查看 [issue #332 on GitHub](https://github.com/prisma/prisma-client-js/issues/332) 更新。
 
-The following example results in **two** `INSERT` statements:
+以下示例结果产生 **两个** `INSERT` 方法:
 
 <CodeWithResult expanded={true}>
 
@@ -820,31 +820,31 @@ prisma:query COMMIT
 
 ### <inlinecode>update</inlinecode>
 
-`update` updates an existing database record.
+`update` 更新现有的数据库记录。
 
-#### Options
+#### 选项
 
-| Name                  | Type                                                   | Required | Description                                                                                                                                                                               |
-| --------------------- | ------------------------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`                | `XOR<UserUpdateInput`<br />`UserUncheckedUpdateInput>` | **Yes**  | Wraps all the fields of the model so that they can be provided when updating an existing record. Fields that are marked as optional or have default values in the datamodel are optional. |
-| `where`               | `UserWhereUniqueInput`                                 | **Yes**  | Wraps all _unique_ fields of a model so that individual records can be selected.                                                                                                          |
-| [`select`](#select)   | `XOR<UserSelect, null>`                                | No       | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                                                                    |
-| [`include`](#include) | `XOR<UserInclude, null>`                               | No       | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object.                                                    |
+| 名称                  | 类型                                                   | 必填   | 描述                                                                                                     |
+| --------------------- | ------------------------------------------------------ | ------ | -------------------------------------------------------------------------------------------------------- |
+| `data`                | `XOR<UserUpdateInput`<br />`UserUncheckedUpdateInput>` | **是** | 包装模型的所有字段，以便在更新现有记录时可以提供它们。在数据模型中标记为可选或具有默认值的字段是可选的。 |
+| `where`               | `UserWhereUniqueInput`                                 | **是** | 包装模型的所有 _unique_ 字段，以便可以选择单个记录。                                                     |
+| [`select`](#select)   | `XOR<UserSelect, null>`                                | 否     | [指定要包含的属性](../../concepts/components/prisma-client/select-fields) 在返回的对象上。               |
+| [`include`](#include) | `XOR<UserInclude, null>`                               | 否     | [指定应急切加载哪些关系](../../concepts/components/prisma-client/relation-queries) 在返回的对象上。      |
 
-#### Return type
+#### 返回类型
 
-| Return type                | Example                        | Description                                                     |
-| -------------------------- | ------------------------------ | --------------------------------------------------------------- |
-| JavaScript object (typed)  | `User`                         |                                                                 |
-| JavaScript object (plain)  | `{ name: "Alice Wonderland" }` | Use `select` and `include` to determine which fields to return. |
-| `RecordNotFound` exception |                                | Exception is thrown if record does not exist.                   |
+| 返回类型                   | 例子                           | 描述                                            |
+| -------------------------- | ------------------------------ | ----------------------------------------------- |
+| JavaScript object (typed)  | `User`                         |                                                 |
+| JavaScript object (plain)  | `{ name: "Alice Wonderland" }` | 使用 `select` 和 `include` 来确定要返回的字段。 |
+| `RecordNotFound` exception |                                | 如果记录不存在则抛出异常。                      |
 
-#### Remarks
+#### 注意
 
-- To perform arithmetic operations on update (add, subtract, multiply, divide), use [atomic updates](#atomic-number-operations) to prevent race conditions.
-- You can also perform a nested [`update`](#update-1) - for example, update a user and that user's posts at the same time.
+- 要对更新（加、减、乘、除）执行算术运算，请使用 [原子更新(atomic updates)](#atomic-number-operations) 来防止竞争条件。
+- 您还可以执行嵌套的 [`update`](#update-1) -例如，同时更新用户和该用户的帖子。
 
-#### Reference
+#### 参考
 
 ```ts file=index.d.ts
 export type UserUpdateArgs = {
@@ -855,9 +855,9 @@ export type UserUpdateArgs = {
 }
 ```
 
-#### Examples
+#### 例子
 
-##### Update the `email` of the `User` record with `id` of `1` to `alice@prisma.io`
+##### 将 `id` 为 `1` 的 `User` 记录的 `email` 更新为 `alice@prisma.io`
 
 ```ts
 const user = await prisma.user.update({
@@ -868,17 +868,17 @@ const user = await prisma.user.update({
 
 ### <inlinecode>upsert</inlinecode>
 
-`upsert` updates an existing _or_ creates a new database record.
+`upsert` 更新现有的*或*创建新的数据库记录。
 
-#### Options
+#### 选项
 
-| Name                  | Type                                                    | Required | Description                                                                                                                                                                                                                                                                |
-| --------------------- | ------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `create`              | `XOR<UserCreateInput,`<br />`UserUncheckedCreateInput>` | **Yes**  | Wraps all the fields of the model so that they can be provided when creating new records. It also includes relation fields which lets you perform (transactional) nested inserts. Fields that are marked as optional or have default values in the datamodel are optional. |
-| `update`              | `XOR<UserUpdateInput,`<br />`UserUncheckedUpdateInput>` | **Yes**  | Wraps all the fields of the model so that they can be provided when updating an existing record. Fields that are marked as optional or have default values in the datamodel are optional.                                                                                  |
-| `where`               | `UserWhereUniqueInput`                                  | **Yes**  | Wraps all _unique_ fields of a model so that individual records can be selected.                                                                                                                                                                                           |
-| [`select`](#select)   | `XOR<UserSelect, null>`                                 | No       | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                                                                                                                                                     |
-| [`include`](#include) | `XOR<UserInclude, null>`                                | No       | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object.                                                                                                                                     |
+| 名称                  | 类型                                                    | 必填   | 描述                                                                                                                                                                                      |
+| --------------------- | ------------------------------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `create`              | `XOR<UserCreateInput,`<br />`UserUncheckedCreateInput>` | **是** | 包装模型的所有字段，以便在创建新记录时提供它们。它还包括允许您执行（事务性）嵌套插入的关系字段。在数据模型中标记为可选或具有默认值的字段是可选的。                                        |
+| `update`              | `XOR<UserUpdateInput,`<br />`UserUncheckedUpdateInput>` | **是** | Wraps all the fields of the model so that they can be provided when updating an existing record. Fields that are marked as optional or have default values in the datamodel are optional. |
+| `where`               | `UserWhereUniqueInput`                                  | **是** | Wraps all _unique_ fields of a model so that individual records can be selected.                                                                                                          |
+| [`select`](#select)   | `XOR<UserSelect, null>`                                 | 否     | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                                                                    |
+| [`include`](#include) | `XOR<UserInclude, null>`                                | 否     | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object.                                                    |
 
 #### Return type
 
@@ -1362,19 +1362,19 @@ See also: [Aggregation, grouping, and summarizing](../../../concepts/components/
 
 #### Options
 
-| Name      | Type                                                         | Required | Description                                                                                                                                                                                              |
-| --------- | ------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`   | `UserWhereInput`                                             | No       | Wraps _all_ model fields in a type so that the list can be filtered by any property.                                                                                                                     |
-| `orderBy` | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | No       | Lets you order the returned list by any property that is also present in `by`.                                                                                                                           |
-| `by`      | `Array<UserScalarFieldEnum>`                                 | No       | Specifies the field or combination of fields to group records by.                                                                                                                                        |
-| `having`  | `UserScalarWhereWithAggregatesInput`                         | No       | Allows you to filter groups by an aggregate value - for example, only return groups _having_ an average age less than 50.                                                                                |
-| `skip`    | `number`                                                     | No       | Specifies how many of the returned objects in the list should be skipped.                                                                                                                                |
+| Name      | Type                                                         | Required | Description                                                                                                                                                                                               |
+| --------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `where`   | `UserWhereInput`                                             | No       | Wraps _all_ model fields in a type so that the list can be filtered by any property.                                                                                                                      |
+| `orderBy` | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | No       | Lets you order the returned list by any property that is also present in `by`.                                                                                                                            |
+| `by`      | `Array<UserScalarFieldEnum>`                                 | No       | Specifies the field or combination of fields to group records by.                                                                                                                                         |
+| `having`  | `UserScalarWhereWithAggregatesInput`                         | No       | Allows you to filter groups by an aggregate value - for example, only return groups _having_ an average age less than 50.                                                                                 |
+| `skip`    | `number`                                                     | No       | Specifies how many of the returned objects in the list should be skipped.                                                                                                                                 |
 | `take`    | `number`                                                     | No       | Specifies how many objects should be returned in the list (as seen from the _beginning_ (positive value) or _end_ (negative value) **either** of the list **or** from the `cursor` position if mentioned) |
-| `_count`  | `true`                                                       | No       | Returns a count of matching records or non-`null` fields.                                                                                                                                                |
-| `_avg`    | `UserAvgAggregateInputType`                                  | No       | Returns an average of all values of the specified field.                                                                                                                                                 |
-| `_sum`    | `UserSumAggregateInputType`                                  | No       | Returns the sume of all values of the specified field.                                                                                                                                                   |
-| `_min`    | `UserMinAggregateInputType`                                  | No       | Returns the smallest available value of the specified field.                                                                                                                                             |
-| `_max`    | `UserMaxAggregateInputType`                                  | No       | Returns the largest available value of the specified field.                                                                                                                                              |
+| `_count`  | `true`                                                       | No       | Returns a count of matching records or non-`null` fields.                                                                                                                                                 |
+| `_avg`    | `UserAvgAggregateInputType`                                  | No       | Returns an average of all values of the specified field.                                                                                                                                                  |
+| `_sum`    | `UserSumAggregateInputType`                                  | No       | Returns the sume of all values of the specified field.                                                                                                                                                    |
+| `_min`    | `UserMinAggregateInputType`                                  | No       | Returns the smallest available value of the specified field.                                                                                                                                              |
+| `_max`    | `UserMaxAggregateInputType`                                  | No       | Returns the largest available value of the specified field.                                                                                                                                               |
 
 #### Reference
 
