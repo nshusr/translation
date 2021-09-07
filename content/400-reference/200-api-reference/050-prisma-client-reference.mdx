@@ -872,13 +872,13 @@ const user = await prisma.user.update({
 
 #### 选项
 
-| 名称                  | 类型                                                    | 必填   | 描述                                                                                                                                                                                      |
-| --------------------- | ------------------------------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `create`              | `XOR<UserCreateInput,`<br />`UserUncheckedCreateInput>` | **是** | 包装模型的所有字段，以便在创建新记录时提供它们。它还包括允许您执行（事务性）嵌套插入的关系字段。在数据模型中标记为可选或具有默认值的字段是可选的。                                        |
-| `update`              | `XOR<UserUpdateInput,`<br />`UserUncheckedUpdateInput>` | **是** | Wraps all the fields of the model so that they can be provided when updating an existing record. Fields that are marked as optional or have default values in the datamodel are optional. |
-| `where`               | `UserWhereUniqueInput`                                  | **是** | Wraps all _unique_ fields of a model so that individual records can be selected.                                                                                                          |
-| [`select`](#select)   | `XOR<UserSelect, null>`                                 | 否     | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                                                                    |
-| [`include`](#include) | `XOR<UserInclude, null>`                                | 否     | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object.                                                    |
+| 名称                  | 类型                                                    | 必填   | 描述                                                                                                                                               |
+| --------------------- | ------------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `create`              | `XOR<UserCreateInput,`<br />`UserUncheckedCreateInput>` | **是** | 包装模型的所有字段，以便在创建新记录时提供它们。它还包括允许您执行（事务性）嵌套插入的关系字段。在数据模型中标记为可选或具有默认值的字段是可选的。 |
+| `update`              | `XOR<UserUpdateInput,`<br />`UserUncheckedUpdateInput>` | **是** | 包装模型的所有字段，以便在更新现有记录时可以提供它们。在数据模型中标记为可选或具有默认值的字段是可选的。                                           |
+| `where`               | `UserWhereUniqueInput`                                  | **是** | Wraps all _unique_ fields of a model so that individual records can be selected.                                                                   |
+| [`select`](#select)   | `XOR<UserSelect, null>`                                 | 否     | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                             |
+| [`include`](#include) | `XOR<UserInclude, null>`                                | 否     | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object.             |
 
 #### Return type
 
