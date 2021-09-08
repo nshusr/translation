@@ -876,24 +876,24 @@ const user = await prisma.user.update({
 | --------------------- | ------------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `create`              | `XOR<UserCreateInput,`<br />`UserUncheckedCreateInput>` | **是** | 包装模型的所有字段，以便在创建新记录时提供它们。它还包括允许您执行（事务性）嵌套插入的关系字段。在数据模型中标记为可选或具有默认值的字段是可选的。 |
 | `update`              | `XOR<UserUpdateInput,`<br />`UserUncheckedUpdateInput>` | **是** | 包装模型的所有字段，以便在更新现有记录时可以提供它们。在数据模型中标记为可选或具有默认值的字段是可选的。                                           |
-| `where`               | `UserWhereUniqueInput`                                  | **是** | Wraps all _unique_ fields of a model so that individual records can be selected.                                                                   |
-| [`select`](#select)   | `XOR<UserSelect, null>`                                 | 否     | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                             |
-| [`include`](#include) | `XOR<UserInclude, null>`                                | 否     | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object.             |
+| `where`               | `UserWhereUniqueInput`                                  | **是** | 包装模型的所有 _unique_ 字段，以便可以选择单个记录。                                                                                               |
+| [`select`](#select)   | `XOR<UserSelect, null>`                                 | 否     | [指定要包含的属性](../../concepts/components/prisma-client/select-fields) 在返回的对象上。                                                         |
+| [`include`](#include) | `XOR<UserInclude, null>`                                | 否     | [指定应急切加载哪些关系](../../concepts/components/prisma-client/relation-queries) 在返回的对象上。                                                |
 
-#### Return type
+#### 返回类型
 
-| Return type               | Example                        | Description                                                     |
-| ------------------------- | ------------------------------ | --------------------------------------------------------------- |
-| JavaScript object (typed) | `User`                         |                                                                 |
-| JavaScript object (plain) | `{ name: "Alice Wonderland" }` | Use `select` and `include` to determine which fields to return. |
+| 返回类型                  | 例子                           | 例子                                            |
+| ------------------------- | ------------------------------ | ----------------------------------------------- |
+| JavaScript object (typed) | `User`                         |                                                 |
+| JavaScript object (plain) | `{ name: "Alice Wonderland" }` | 使用 `select` 和 `include` 来确定要返回的字段。 |
 
-#### Remarks
+#### 注意
 
-- To perform arithmetic operations on update (add, subtract, multiply, divide), use [atomic updates](#atomic-number-operations) to prevent race conditions.
+- 要对更新（加、减、乘、除）执行算术运算，请使用 [原子更新(atomic updates)](#atomic-number-operations) 来防止竞争条件。
 
-#### Reference
+#### 参考
 
-`upsert` accepts the following input type:
+`upsert` 接受以下输入类型:
 
 ```ts file=index.d.ts
 export type UserUpsertArgs = {
@@ -905,9 +905,9 @@ export type UserUpsertArgs = {
 }
 ```
 
-#### Examples
+#### 例子
 
-##### Update (if exists) or create a new `User` record with an `email` of `alice@prisma.io`
+##### 更新（如果存在）或创建一个 `email` 为 `alice@prisma.io` 的 `User` 记录
 
 ```ts
 const user = await prisma.user.upsert({
@@ -919,20 +919,20 @@ const user = await prisma.user.upsert({
 
 ### <inlinecode>delete</inlinecode>
 
-`delete` deletes an existing database record. You can delete a record:
+`delete` 删除现有的数据库记录。您可以删除记录:
 
-- By _ID_
-- By a _unique_ attribute
+- 按 _ID_
+- 按一个 _unique_ 属性
 
-To delete records that match a certain criteria, use [`deleteMany`](#deleteMany) with a filter.
+要删除符合特定条件的记录，请使用带过滤器的 [`deleteMany`](#deleteMany)。
 
-#### Options
+#### 选项
 
-| Name                  | Type                     | Required | Description                                                                                                                            |
-| --------------------- | ------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`               | `UserWhereUniqueInput`   | **Yes**  | Wraps all _unique_ fields of a model so that individual records can be selected.                                                       |
-| [`select`](#select)   | `XOR<UserSelect, null>`  | No       | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                 |
-| [`include`](#include) | `XOR<UserInclude, null>` | No       | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object. |
+| 名称                  | 类型                     | 必填    | 描述                                                                                                                                   |
+| --------------------- | ------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `where`               | `UserWhereUniqueInput`   | **Yes** | Wraps all _unique_ fields of a model so that individual records can be selected.                                                       |
+| [`select`](#select)   | `XOR<UserSelect, null>`  | No      | [Specifies which properties to include](../../concepts/components/prisma-client/select-fields) on the returned object.                 |
+| [`include`](#include) | `XOR<UserInclude, null>` | No      | [Specifies which relations should be eagerly loaded](../../concepts/components/prisma-client/relation-queries) on the returned object. |
 
 #### Return type
 
