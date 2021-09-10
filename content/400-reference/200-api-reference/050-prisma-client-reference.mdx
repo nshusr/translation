@@ -662,7 +662,7 @@ main()
 | `orderBy`  | `XOR<Enumerable<PostOrder`<br />`ByInput>, PostOrderByInput>` | 否   | 允许您按任何属性对返回的列表进行排序。                                                                                 |
 | `skip`     | `number`                                                      | 否   | 指定应跳过列表中返回的对象的数量。                                                                                     |
 | `cursor`   | `UserWhereUniqueInput`                                        | 否   | 指定列表开始的位置（该值通常指定一个 id 或其他唯一值）。                                                               |
-| `take`     | `number`                                                      | 否   | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）来看，或者从 `cursor` 位置（如果提到的话）。 |
+| `take`     | `number`                                                      | 否   | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。 |
 | `select`   | `XOR<PostSelect, null>`                                       | 否   | [指定要包含的属性](../../concepts/components/prisma-client/select-fields) 在返回的对象上。                             |
 | `include`  | `XOR<PostInclude, null>`                                      | 否   | [指定急切加载哪些关系](../../concepts/components/prisma-client/relation-queries) 在返回的对象上。                      |
 | `distinct` | `Enumerable<UserDistinctFieldEnum>`                           | 否   | 允许您按特定的字段来过滤掉重复的行。 - 例如仅返回不同标题的“帖子”。                                                    |
@@ -1116,13 +1116,13 @@ const deleteUser = await prisma.user.updateMany({
 
 ### <inlinecode>deleteMany</inlinecode>
 
-`deleteMany` deletes multiple records in a transaction.
+`deleteMany` 删除的多条记录。
 
 #### 选项
 
 | 名称    | 类型             | 必填 | 描述                                                |
 | ------- | ---------------- | ---- | --------------------------------------------------- |
-| `where` | `UserWhereInput` | 否   | 包装模型的 _all_ 字段，以便可以按任何字段过滤列表。 |
+| `where` | `UserWhereInput` | 否   | 包装模型的 _所有_ 字段，以便可以按任何字段过滤列表。 |
 
 #### 返回类型
 
@@ -1170,20 +1170,20 @@ const deletedUserCount = await prisma.user.deleteMany({
 
 | 名称       | 类型                                                          | 必填 | 描述                                                                                                                                                                                                      |
 | ---------- | ------------------------------------------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`    | `UserWhereInput`                                              | 否   | Wraps _all_ model fields in a type so that the list can be filtered by any property.                                                                                                                      |
+| `where`    | `UserWhereInput`                                              | 否   | 将_所有_模型字段包装在一个类型中，以便可以通过任何属性过滤列表。                                                                                                                      |
 | `cursor`   | `UserWhereUniqueInput`                                        | 否   | 指定列表的位置（该值通常指定一个 `id` 或另一个唯一值）。                                                                                                                                                  |
-| `skip`     | `number`                                                      | 否   | Specifies how many of the returned objects in the list should be skipped.                                                                                                                                 |
-| `take`     | `number`                                                      | 否   | Specifies how many objects should be returned in the list (as seen from the _beginning_ (positive value) or _end_ (negative value) **either** of the list **or** from the `cursor` position if mentioned) |
-| `orderBy`  | `XOR<Enumerable<PostOrder`<br />`ByInput>, PostOrderByInput>` | 否   | Lets you order the returned list by any property.                                                                                                                                                         |
-| `distinct` | `Enumerable<UserDistinctFieldEnum>`                           | 否   | Lets you filter out duplicate rows by a specific field - for example, return only distinct `Post` titles.                                                                                                 |
-| `select`   | `UserCountAggregateInputType`                                 | 否   | Select which fields to count (non-`null` values) - you can also count `_all`.                                                                                                                             |
+| `skip`     | `number`                                                      | 否   | 指定应跳过列表中返回的对象的数量。                                                                                                                                 |
+| `take`     | `number`                                                      | 否   | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。|
+| `orderBy`  | `XOR<Enumerable<PostOrder`<br />`ByInput>, PostOrderByInput>` | 否   | 允许您按任何属性对返回的列表进行排序。                                                                                                                                                         |
+| `distinct` | `Enumerable<UserDistinctFieldEnum>`                           | 否   | 允许您按特定字段过滤掉重复的行 -例如，仅返回不同的 `Post` 标题。                                                                                                 |
+| `select`   | `UserCountAggregateInputType`                                 | 否   | 选择要计算的字段（非 `null` 值） -您也可以计算`_all`。                                                                                                                             |
 
 #### 返回类型
 
-| 返回类型                       | 例子                     | Description                   |
+| 返回类型                       | 例子                     | 描述                   |
 | ------------------------------ | ------------------------ | ----------------------------- |
-| `number`                       | `29`                     | The count of records.         |
-| `UserCountAggregateOutputType` | `{ _all: 27, name: 10 }` | Returned if `select` is used. |
+| `number`                       | `29`                     | 记录条数。         |
+| `UserCountAggregateOutputType` | `{ _all: 27, name: 10 }` | 如果使用了 `select`，则返回。 |
 
 #### 参考
 
@@ -1216,13 +1216,13 @@ export type UserCountAggregateOutputType = {
 
 #### 例子
 
-##### Count all `User` records
+##### 统计所有 `User` 记录共有多少条
 
 ```ts
 const result = await prisma.user.count()
 ```
 
-##### Count all `User` records with at least one published `Post`
+##### 统计所有 `User` 记录共有多少条，其中至少有一条已发布的 `Post`
 
 ```ts
 const result = await prisma.user.count({
@@ -1236,13 +1236,13 @@ const result = await prisma.user.count({
 })
 ```
 
-##### Use `select` to perform three separate counts
+##### 使用 `select` 来执行三个分别统计
 
-The following query returns:
+以下查询返回:
 
-- A count of all records (`_all`)
-- A count of all records with non-`null` `name` fields
-- A count of all records with non-`null` `city` fields
+- 所有记录的总数（`_all`）
+- 具有 非`null` `name` 字段的所有记录的计数
+- 具有 非`null` `city` 字段的所有记录的计数
 
 ```ts
 const c = await prisma.user.count({
@@ -1256,23 +1256,23 @@ const c = await prisma.user.count({
 
 ### <inlinecode>aggregate</inlinecode>
 
-See also: [Aggregation, grouping, and summarizing](../../../concepts/components/prisma-client/aggregation-grouping-summarizing#aggregate) <span class="concept"></span>
+参见：[聚合，分组和汇总](../../../concepts/components/prisma-client/aggregation-grouping-summarizing#aggregate) <span class="concept"></span>
 
 #### 选项
 
-| Name       | Type                                                         | Required | Description                                                                                                                                                                                               |
+| 名称       | 类型                                                         | 必填 | 描述                                                                                                                                                                                               |
 | ---------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`    | `UserWhereInput`                                             | No       | Wraps _all_ model fields in a type so that the list can be filtered by any property.                                                                                                                      |
-| `orderBy`  | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | No       | Lets you order the returned list by any property.                                                                                                                                                         |
-| `cursor`   | `UserWhereUniqueInput`                                       | No       | Specifies the position for the list (the value typically specifies an `id` or another unique value).                                                                                                      |
-| `skip`     | `number`                                                     | No       | Specifies how many of the returned objects in the list should be skipped.                                                                                                                                 |
-| `take`     | `number`                                                     | No       | Specifies how many objects should be returned in the list (as seen from the _beginning_ (positive value) or _end_ (negative value) **either** of the list **or** from the `cursor` position if mentioned) |
-| `distinct` | `Enumerable<UserDistinctFieldEnum>`                          | No       | Lets you filter out duplicate rows by a specific field - for example, return only distinct `Post` titles.                                                                                                 |
-| `_count`   | `true`                                                       | No       | Returns a count of matching records or non-`null` fields.                                                                                                                                                 |
-| `_avg`     | `UserAvgAggregateInputType`                                  | No       | Returns an average of all values of the specified field.                                                                                                                                                  |
-| `_sum`     | `UserSumAggregateInputType`                                  | No       | Returns the sume of all values of the specified field.                                                                                                                                                    |
-| `_min`     | `UserMinAggregateInputType`                                  | No       | Returns the smallest available value of the specified field.                                                                                                                                              |
-| `_max`     | `UserMaxAggregateInputType`                                  | No       | Returns the largest available value of the specified field.                                                                                                                                               |
+| `where`    | `UserWhereInput`                                             | 否       | 将_所有_模型字段包装在一个类型中，以便可以通过任何属性过滤列表。                                                                                                                      |
+| `orderBy`  | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | 否       | 允许您按任何属性对返回的列表进行排序。                                                                                                                                                         |
+| `cursor`   | `UserWhereUniqueInput`                                       | 否       | 指定列表的位置（该值通常指定一个 `id` 或另一个唯一值）。                                                                                                      |
+| `skip`     | `number`                                                     | 否       | 指定应跳过列表中返回的对象的数量。                                                                                                                                 |
+| `take`     | `number`                                                     | 否       | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。 |
+| `distinct` | `Enumerable<UserDistinctFieldEnum>`                          | 否       | 允许您按特定字段过滤掉重复的行 -例如，仅返回不同的 `Post` 标题。                                                                                                 |
+| `_count`   | `true`                                                       | 否       | 返回匹配记录或非空字段的数量。                                                                                                                                                 |
+| `_avg`     | `UserAvgAggregateInputType`                                  | 否       | 返回指定字段的所有值的平均值。                                                                                                                                                  |
+| `_sum`     | `UserSumAggregateInputType`                                  | 否       | 返回指定字段的所有值的总和。                                                                                                                                                    |
+| `_min`     | `UserMinAggregateInputType`                                  | 否       | 返回指定字段的最小可用值。                                                                                                                                              |
+| `_max`     | `UserMaxAggregateInputType`                                  | 否       | 返回指定字段的最大可用值。                                                                                                                                               |
 
 #### 参考
 
@@ -1296,7 +1296,7 @@ export type UserAggregateArgs = {
 
 #### 例子
 
-##### Return `_min`, `_max`, and `_count` of `profileViews` of all `User` records
+##### 返回所有 `User` 记录的 `profileViews` 的 `_min`、`_max` 和 `_count`
 
 <CodeWithResult>
 <cmd>
@@ -1329,7 +1329,7 @@ const minMaxAge = await prisma.user.aggregate({
 </cmdResult>
 </CodeWithResult>
 
-##### Return `_sum` of all `profileViews` for all `User` records
+##### 返回所有 `User` 记录的 `profileViews` 的 `_sum`
 
 <CodeWithResult>
 <cmd>
@@ -1358,23 +1358,23 @@ const setValue = await prisma.user.aggregate({
 
 ### <inlinecode>groupBy</inlinecode>
 
-See also: [Aggregation, grouping, and summarizing](../../../concepts/components/prisma-client/aggregation-grouping-summarizing#group-by) <span class="concept"></span>
+参见: [聚合, 分组和汇总](../../../concepts/components/prisma-client/aggregation-grouping-summarizing#group-by) <span class="concept"></span>
 
 #### 选项
 
-| Name      | Type                                                         | Required | Description                                                                                                                                                                                               |
+| 名称      | 类型                                                         | 必填 | 描述                                                                                                                                                                                               |
 | --------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`   | `UserWhereInput`                                             | No       | Wraps _all_ model fields in a type so that the list can be filtered by any property.                                                                                                                      |
-| `orderBy` | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | No       | Lets you order the returned list by any property that is also present in `by`.                                                                                                                            |
-| `by`      | `Array<UserScalarFieldEnum>`                                 | No       | Specifies the field or combination of fields to group records by.                                                                                                                                         |
-| `having`  | `UserScalarWhereWithAggregatesInput`                         | No       | Allows you to filter groups by an aggregate value - for example, only return groups _having_ an average age less than 50.                                                                                 |
-| `skip`    | `number`                                                     | No       | Specifies how many of the returned objects in the list should be skipped.                                                                                                                                 |
-| `take`    | `number`                                                     | No       | Specifies how many objects should be returned in the list (as seen from the _beginning_ (positive value) or _end_ (negative value) **either** of the list **or** from the `cursor` position if mentioned) |
-| `_count`  | `true`                                                       | No       | Returns a count of matching records or non-`null` fields.                                                                                                                                                 |
-| `_avg`    | `UserAvgAggregateInputType`                                  | No       | Returns an average of all values of the specified field.                                                                                                                                                  |
-| `_sum`    | `UserSumAggregateInputType`                                  | No       | Returns the sume of all values of the specified field.                                                                                                                                                    |
-| `_min`    | `UserMinAggregateInputType`                                  | No       | Returns the smallest available value of the specified field.                                                                                                                                              |
-| `_max`    | `UserMaxAggregateInputType`                                  | No       | Returns the largest available value of the specified field.                                                                                                                                               |
+| `where`   | `UserWhereInput`                                             | 否       | 将_所有_模型字段包装在一个类型中，以便可以通过任何属性过滤列表。                                                                                                                      |
+| `orderBy` | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | 否       | 允许您按也存在于 `by` 中的任何属性对返回的列表进行排序。                                                                                                                            |
+| `by`      | `Array<UserScalarFieldEnum>`                                 | 否       | 指定作为记录分组依据的字段或字段组合。                                                                                                                                         |
+| `having`  | `UserScalarWhereWithAggregatesInput`                         | 否       | 允许您按聚合值过滤组 -例如，仅返回平均年龄小于 50 岁的组。                                                                                 |
+| `skip`    | `number`                                                     | 否       | 指定应跳过列表中返回的对象的数量。                                                                                                                                 |
+| `take`    | `number`                                                     | 否       | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。 |
+| `_count`  | `true`                                                       | 否       | 返回匹配记录或非空字段的数量。                                                                                                                                                 |
+| `_avg`    | `UserAvgAggregateInputType`                                  | 否       | 返回指定字段的所有值的平均值。                                                                                                                                                  |
+| `_sum`    | `UserSumAggregateInputType`                                  | 否       | 返回指定字段的所有值的总和。                                                                                                                                                    |
+| `_min`    | `UserMinAggregateInputType`                                  | 否       | 返回指定字段的最小可用值。                                                                                                                                              |
+| `_max`    | `UserMaxAggregateInputType`                                  | 否       | 返回指定字段的最大可用值。                                                                                                                                               |
 
 #### 参考
 
@@ -1398,9 +1398,9 @@ export type UserGroupByArgs = {
 
 #### 例子
 
-##### Group by `country`/`city` where the average `profileViews` is greater than `200`, and return the `_sum` of `profileViews` for each group
+##### 按平均 `profileViews` 大于 `200` 的 `country`/`city` 分组，并返回每组 `profileViews` 的 `_sum`
 
-The query also returns a count of `_all` records in each group, and all records with non-`null` `city` field values in each group.
+该查询还返回每个组中 `_all` 记录的计数，以及每个组中具有非 `null` `city` 字段值的所有记录。
 
 <CodeWithResult expanded="{true}">
 <cmd>
@@ -1457,16 +1457,16 @@ const groupUsers = await prisma.user.groupBy({
 </cmdResult>
 </CodeWithResult>
 
-## Model query options
+## 模型查询选项
 
 ### <inlinecode>select</inlinecode>
 
-`select` defines which fields are included in the object that Prisma Client returns. See: [Select fields and include relations](../../../concepts/components/prisma-client/select-fields) <span class="concept"></span>.
+`select` 定义了 Prisma Client 返回的对象中包含哪些字段。请参阅：[选择字段并包含关系](../../../concepts/components/prisma-client/select-fields) <span class="concept"></span>。
 
-#### Remarks
+#### 注意
 
-- You cannot combine `select` and `include` on the same level.
-- In [2.20.0](https://github.com/prisma/prisma/releases/2.20.0) and later, you can [select a `_count` of relations](#select-a-_count-of-relations).
+- 您不能在同一级别上组合使用 `select` 和 `include`。
+- 在 [2.20.0](https://github.com/prisma/prisma/releases/2.20.0)及更高版本, 你可以[选择一个`_count`个关系] (#select-a-_count-of-relations).
 
 #### 参考
 
@@ -1485,7 +1485,7 @@ export type UserSelect = {
 
 #### 例子
 
-##### Select the `name` and `profileViews` fields of a single `User` record
+##### 选择返回的 `User` 对象中包含 `name` 和 `profileViews` 字段
 
 <CodeWithResult>
 <cmd>
@@ -1513,7 +1513,8 @@ const result = await prisma.user.findUnique({
 </cmdResult>
 </CodeWithResult>
 
-##### Select the `name` and `profileViews` fields of a multiple `User` records
+##### 选择多个 `User` 记录的 `name` 和 `profileViews` 字段
+
 
 <CodeWithResult>
 <cmd>
@@ -1546,7 +1547,7 @@ const result = await prisma.user.findMany({
 </cmdResult>
 </CodeWithResult>
 
-##### Select a `_count` of relations
+##### 选择一个 `_count` 关系
 
 <CodeWithResult>
 <cmd>
@@ -1575,7 +1576,7 @@ const usersWithCount = await prisma.user.findMany({
 </cmdResult>
 </CodeWithResult>
 
-##### Select the 'id' and 'title' fields of related `Post` records
+##### 选择 `Post` 关系中的 `id` 和 `title` 字段
 
 <CodeWithResult>
 <cmd>
@@ -1619,7 +1620,7 @@ const result = await prisma.user.findMany({
 </cmdResult>
 </CodeWithResult>
 
-##### `include` inside `select`
+##### `include` 在 `select` 中
 
 <CodeWithResult>
 <cmd>
@@ -1681,9 +1682,9 @@ const result = await prisma.user.findMany({
 </cmdResult>
 </CodeWithResult>
 
-#### Generated types for `select`
+#### `select` 的生成类型
 
-The following examples demonstrate how to use the [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) with `select`:
+以下示例演示了如何将 [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) 与 `select` 结合使用： 
 
 - `SelectAndInclude`
 - `UserSelect`
@@ -1709,11 +1710,11 @@ const selectNameEmailNotPosts = Prisma.validator<Prisma.UserSelect>()({
 
 ### <inlinecode>include</inlinecode>
 
-`include` defines which relations are included in the result that the Prisma Client returns. See: [Select fields and include relations](../../../concepts/components/prisma-client/select-fields) <span class="concept"></span>.
+`include` 定义了 Prisma 客户端返回的结果中包含哪些关系。请参阅：[选择字段并包含关系](../../../concepts/components/prisma-client/select-fields) <span class="concept"></span>。
 
-#### Remarks
+#### 注意
 
-- In [2.20.0](https://github.com/prisma/prisma/releases/2.20.0)P and later, you can [`include` a `_count` of relations](#include-a-_count-of-relations)
+- 在 [2.20.0](https://github.com/prisma/prisma/releases/2.20.0) 和更高版本, 你可以[`include`一个`_count`的关系](#include-a-_count-of-relations)
 
 #### 参考
 
@@ -1726,7 +1727,7 @@ export type UserInclude = {
 
 #### 例子
 
-##### Include the `posts` and `profile` relation when loading `User` records
+##### 加载 `User` 记录时包含 `posts` 和 `profile` 关系
 
 ```ts
 const users = await prisma.user.findMany({
@@ -1737,7 +1738,7 @@ const users = await prisma.user.findMany({
 })
 ```
 
-##### Include the `posts` relation on the returned objects when creating a new `User` record with two `Post` records
+##### 在创建一个有两条 `Post` 记录的新 `User` 记录时，在返回的对象上包括 `posts` 关系
 
 ```ts
 const user = await prisma.user.create({
@@ -1754,9 +1755,9 @@ const user = await prisma.user.create({
 })
 ```
 
-#### Generated types for `include`
+#### `include` 的生成类型
 
-The following examples demonstrate how to use the [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) with `include`:
+以下示例演示了如何将 [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) 与 `include` 一起使用：
 
 - `SelectAndInclude`
 - `UserInclude`
@@ -1778,7 +1779,7 @@ const includePosts = Prisma.validator<Prisma.UserInclude>()({
 })
 ```
 
-##### Include a `_count` of relations
+##### 加载一个 `_count` 的关系
 
 <CodeWithResult>
 <cmd>
@@ -1806,11 +1807,11 @@ const usersWithCount = await prisma.user.findMany({
 
 ### <inlinecode>where</inlinecode>
 
-`where` defines one or more [filters](#filter-conditions-and-operators), and can be used to filter on record properties (like a user's email address) or related record properties (like a user's top 10 most recent post titles).
+`where` 定义了一个或多个 [过滤器](#filter-conditions-and-operators)，可用于过滤记录属性（如用户的电子邮件地址）或相关记录属性（如用户最近的前 10 篇帖子）标题）。 
 
 #### 参考
 
-For queries like `findMany` and `updateMany` that return multiple records, `where` 接受以下输入类型:
+对于像 `findMany` 和 `updateMany` 这样返回多条记录的查询, `where` 接受以下输入类型:
 
 ```ts file=index.d.ts
 export type UserWhereInput = {
@@ -1827,9 +1828,9 @@ export type UserWhereInput = {
 }
 ```
 
-> `findFirst` is a `findMany` query with a `take: 1`, and also accepts `UserWhereInput`.
+> `findFirst` 是一个带有 `take: 1` 的 `findMany` 查询，并且也接受 `UserWhereInput`。
 
-For queries like `findUnique`, which returns a single record by ID or unique identifier, `where` 接受以下输入类型:
+对于像 `findUnique` 这样的查询，它通过 ID 或唯一标识符返回单个记录, `where` 接受以下输入类型:
 
 ```ts file=index.d.ts
 export type UserWhereUniqueInput = {
@@ -1850,9 +1851,9 @@ const results = await prisma.user.findMany({
 })
 ```
 
-#### Generated types for `where`
+#### `where` 的生成类型
 
-The following examples demonstrate how to use the [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) with `where`:
+以下示例演示了如何将 [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) 与 `where` 结合使用：
 
 - `UserWhereInput`
 
@@ -1875,8 +1876,8 @@ const whereNameIs = Prisma.validator<Prisma.UserWhereInput>()({
 })
 ```
 
-- `UserWhereUniqueInput` This type works by exposing any unique fields on the model. A field assigned `@id` is considered unique,
-  as is one assigned `@unique`.
+- `UserWhereUniqueInput` 这种类型的工作原理是公开模型上的任何唯一字段。分配了 `@id` 的字段被认为是唯一的，
+  正如一个分配的 `@unique`。 
 
 ```ts
 // UserWhereUniqueInput
@@ -1893,8 +1894,8 @@ const whereScalarTitleIs = Prisma.validator<Prisma.PostScalarWhereInput>()({
 })
 ```
 
-- `PostUpdateWithWhereUniqueWithoutAuthorInput` - This type accepts a unique `where` field (an `@id` or another assigned `@unique`)
-  and updates any field on the `Post` model except the `Author`. The `Author` is the scalar field on the `Post` model.
+- `PostUpdateWithWhereUniqueWithoutAuthorInput` - 此类型接受唯一的 `where` 字段（`@id` 或其他分配的 `@unique`）
+  并更新 `Post` 模型上除 `Author` 之外的任何字段。 `Author` 是 `Post` 模型上的标量字段。
 
 ```ts
 const updatePostByIdWithoutAuthor =
@@ -1910,7 +1911,7 @@ const updatePostByIdWithoutAuthor =
   })
 ```
 
-- `PostUpsertWithWhereUniqueWithoutAuthorInput` - This type will update the `Post` records title field where the id matches, if it doesn't exist it will create it instead.
+- `PostUpsertWithWhereUniqueWithoutAuthorInput` - 此类型将更新 id 匹配的 `Post` 记录标题字段，如果它不存在，它将改为创建它。
 
 ```ts
 const updatePostTitleOrCreateIfNotExist =
@@ -1928,7 +1929,7 @@ const updatePostTitleOrCreateIfNotExist =
   })
 ```
 
-- `PostUpdateManyWithWhereWithoutAuthorInput` - This type will update all `Post` records where published is set to false.
+- `PostUpdateManyWithWhereWithoutAuthorInput` - 这种类型将更新所有发布为 false 的 `Post` 记录。
 
 ```ts
 const publishAllPosts =
@@ -1946,18 +1947,18 @@ const publishAllPosts =
 
 ### <inlinecode>orderBy</inlinecode>
 
-Sorts a list of records. See also: [Sorting](../../../concepts/components/prisma-client/filtering-and-sorting) <span class="concept"></span>
+对记录列表进行排序。另请参阅：[排序](../../../concepts/components/prisma-client/filtering-and-sorting) <span class="concept"></span>
 
-#### Remarks
+#### 注意
 
-- In [2.16.0](https://github.com/prisma/prisma/releases/2.16.0) and later, you can [order by relation fields](#sort-post-by-the-related-user-records-name) (Preview) - for example, order posts by the author's name
+- 在 [2.16.0](https://github.com/prisma/prisma/releases/2.16.0) 和更高版本, 您可以[按关系字段排序](#sort-post-by-the-related-user-records-name) (预览)-例如，按作者的名字排列文章
 
-#### Inputs
+#### 输入
 
-| Name   | Description                  |
+| 名称   | 描述                  |
 | ------ | ---------------------------- |
-| `asc`  | Sort ascending (A &rarr; Z)  |
-| `desc` | Sort descending (Z &rarr; A) |
+| `asc`  | 升序 (A &rarr; Z)  |
+| `desc` | 降序 (Z &rarr; A) |
 
 #### 参考
 
@@ -1976,7 +1977,7 @@ export type UserOrderByInput = {
 }
 ```
 
-Related types:
+相关类型：
 
 ```ts
 export type PostOrderByAggregateInput = {
@@ -1998,9 +1999,9 @@ export declare const SortOrder: {
 
 #### 例子
 
-##### Sort `User` by `email` field
+##### 排序 `User` 按 `email` 字段
 
-The following example returns all `User` records sorted by `email` ascending:
+以下示例返回所有 `User` 记录按 `email` 升序排序：
 
 ```ts
 const users = await prisma.user.findMany({
@@ -2010,7 +2011,7 @@ const users = await prisma.user.findMany({
 })
 ```
 
-The following example returns all `User` records sorted by `email` descending:
+以下示例返回所有 `User` 记录按 `email` 降序排序：
 
 ```ts
 const users = await prisma.user.findMany({
@@ -2020,9 +2021,9 @@ const users = await prisma.user.findMany({
 })
 ```
 
-#### Sort `Post` by the related `User` record's `name`
+#### 返回 `Post` 记录按关联 `User` 记录的 `name` 排序
 
-Sorting by relation fields is a Preview feature. To enable this feature, add `orderByRelation` to `previewFeatures` in your schema:
+排序关联字段是预览特性。要启用此功能，请在您的模式中添加 `orderByRelation` 到 `previewFeatures`：
 
 ```prisma highlight=3;normal
 generator client {
@@ -2031,7 +2032,7 @@ generator client {
 }
 ```
 
-The following query orders posts by user name:
+以下查询按用户名对帖子排序：
 
 ```ts
 const posts = await prisma.post.findMany({
@@ -2043,9 +2044,9 @@ const posts = await prisma.post.findMany({
 })
 ```
 
-#### Sort `User` by the `posts` count
+#### 排序 `User` 按 `posts` 记录数量
 
-Sorting by relation count is a Preview feature. To enable this feature, add `orderByRelation` to `previewFeatures` in your schema:
+排序关联计数(orderBy count)是预览特性。要启用此功能，请在您的模式中添加 `orderByRelation` 到 `previewFeatures`：
 
 ```prisma highlight=3;normal
 generator client {
@@ -2054,7 +2055,7 @@ generator client {
 }
 ```
 
-The following query orders users by post count:
+以下查询按帖子数量排序用户：
 
 ```ts
 const getActiveusers = await prisma.user.findMany({
@@ -2066,9 +2067,9 @@ const getActiveusers = await prisma.user.findMany({
 })
 ```
 
-##### Sort `User` by multiple fields - `email` _and_ `role`
+##### 排序 `User` 按多个字段 - `email` _和_ `role`
 
-The following example sorts users by two fields - first `email`, then `role`:
+以下示例按两个字段排序用户：- 首先按 `email`，然后按 `role`
 
 <CodeWithResult>
 
@@ -2136,7 +2137,7 @@ const users = await prisma.user.findMany({
 
 </CodeWithResult>
 
-The order of sorting parameters matters - the following query sorts by `role`, then `email`. Not the difference in the results:
+排序参数的顺序很重要 - 以下查询按 `role`，然后按 `email` 排序。不是结果的差异：
 
 <CodeWithResult>
 
@@ -2204,7 +2205,7 @@ const users = await prisma.user.findMany({
 
 </CodeWithResult>
 
-##### Sort `User` by `email`, select `name` and `email`
+##### 排序 `User` 按 `email`，选择 `name` 和 `email`
 
 The following example returns all the `name` and `email` fields of all `User` records, sorted by `email`:
 
@@ -2583,7 +2584,7 @@ const distinctCitiesAndCountries = await prisma.user.findMany({
 
 A nested `create` query adds a new related record or set of records to a parent record. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>.
 
-#### Remarks
+#### 注意
 
 - `create` is available as a nested query when you `create` (`prisma.user.create(...)`) a new parent record or `update` (`prisma.user.update(...)`) an existing parent record.
 
@@ -2684,7 +2685,7 @@ const user = await prisma.user.update({
 
 A nested `createMany` query adds a new set of records to a parent record. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>.
 
-#### Remarks
+#### 注意
 
 - `createMany` is available as a nested query when you `create` (`prisma.user.create(...)`) a new parent record or `update` (`prisma.user.update(...)`) an existing parent record.
 - Available in the context of a has-many relation - for example, you can `prisma.user.create(...)` a user and use a nested `createMany` to create multiple posts (posts have one user).
@@ -2739,7 +2740,7 @@ const user = await prisma.user.update({
 
 A nested `connect` query connects a record to an existing related record by specifying an ID or unique identifier. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>
 
-#### Remarks
+#### 注意
 
 - `connect` is available as a nested query when you create a new parent record or update an existing parent record.
 - If the related record does not exist, Prisma Client throws an exception:
@@ -2832,7 +2833,7 @@ const user = await prisma.user.update({
 
 `connectOrCreate` _either_ connects a record to an existing related record by ID or unique identifier _or_ creates a new related record if the record does not exist. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>
 
-#### Remarks
+#### 注意
 
 <!-- prettier-ignore-start -->
 
@@ -3000,7 +3001,7 @@ const user = await prisma.user.update({
 
 A nested `disconnect` query breaks the connection between a parent record and a related record, but does not delete either record. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>
 
-#### Remarks
+#### 注意
 
 - `disconnect` is only available if the relation is optional.
 - If the relationship you are attempting to disconnect does not exist:
@@ -3046,7 +3047,7 @@ const user = await prisma.user.update({
 
 A nested `update` query updates one or more related records where the parent record's ID is `n`. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries#update-a-specific-related-record) <span class="concept"></span>
 
-#### Remarks
+#### 注意
 
 - Nested `update` queries are only available in the context of a top-level `update` query (for example, `prisma.user.update(...)`).
 - If the parent record does not exist, Prisma Client throws an exception:
@@ -3152,7 +3153,7 @@ const user = await prisma.user.update({
 
 A nested `delete` query deletes a related record. The parent record is not deleted.
 
-#### Remarks
+#### 注意
 
 - `delete` is only available if the relation is optional.
 
@@ -3290,7 +3291,7 @@ const result = await prisma.user.findMany({
 
 Value `n` exists in list.
 
-#### Remarks
+#### 注意
 
 - `null` values are not returned. For example, if you combine `in` and `NOT` to return user whose name is _not_ in the list, users with `null` value names are not returned.
 
@@ -3357,7 +3358,7 @@ const getUser = await prisma.user.findMany({
 
 Value `n` does not exist in list.
 
-#### Remarks
+#### 注意
 
 - `null` values are not returned.
 
@@ -3495,7 +3496,7 @@ const result = await prisma.post.count({
 
 ### <inlinecode>mode</inlinecode>
 
-#### Remarks
+#### 注意
 
 - Supported by the PostgreSQL and MongoDB connectors only
 
@@ -3769,7 +3770,7 @@ const result = await prisma.post.findMany({
 
 Returns all records where **one or more** ("some") _related_ records match filtering criteria.
 
-#### Remarks
+#### 注意
 
 - You can use `some` without parameters to return all records with at least one relation
 
@@ -3785,7 +3786,8 @@ export type PostFilter = {
 
 #### 例子
 
-##### Get all `User` records where _all_ posts are published and a least one related `Post` mentions `Prisma`
+##### Get all `User` records where _所有_ posts are published and a least one related `Post` mentions `Prisma`
+##### 获取_所有_已发布的 `用户` 帖子，并且至少有一个相关的 `Post` 提到了 `Prisma`
 
 ```ts
 const result = await prisma.user.findMany({
@@ -3806,7 +3808,7 @@ const result = await prisma.user.findMany({
 
 ### <inlinecode>every</inlinecode>
 
-Returns all records where **all** ("every") _related_ records match filtering criteria.
+返回所有 **all**("every") _关联_记录匹配过滤条件的记录
 
 #### 参考
 
@@ -3820,7 +3822,7 @@ export type PostFilter = {
 
 #### 例子
 
-##### Get all `User` records where _all_ posts are published and a least one related `Post` mentions `Prisma`
+##### 获取_全部_已发布帖子的所有 `User`，并且至少有一个相关的 `Post` 提到了 `Prisma`
 
 ```ts
 const result = await prisma.user.findMany({
@@ -3843,7 +3845,7 @@ const result = await prisma.user.findMany({
 
 Returns all records where **zero** _related_ records match filtering criteria.
 
-#### Remarks
+#### 注意
 
 - You can use `none` without parameters to [return all records with no relations](#get-all-user-records-with-zero-posts)
 
@@ -3958,7 +3960,7 @@ export type PostUpdatetagsInput = {
 
 Use `set` to overwrite the value of a scalar list field.
 
-#### Remarks
+#### 注意
 
 - `set` is optional - you can set the value directly:
 
@@ -4017,7 +4019,7 @@ const setTags = await prisma.post.update({
 
 `push` is available in version [2.20.0](https://github.com/prisma/prisma/releases/2.20.0) and later. Use `push` to add _one_ value to a scalar list field.
 
-#### Remarks
+#### 注意
 
 - Available for PostgreSQL only.
 - You cannot push a list of values - only a single value.
@@ -4049,7 +4051,7 @@ Scalar list filters allow you to filter by the contents of a list / array field.
 
 </Admonition>
 
-### Remarks
+### 注意
 
 - Scalar list / array filters [ignore `NULL` values](../../../concepts/components/prisma-client/working-with-fields/working-with-scalar-lists-arrays#null-values-in-arrays) <span class="concept"></span>. Using `isEmpty` or `NOT` does not return records with `NULL` value lists / arrays, and `{ equals: null }` results in an error.
 
@@ -4205,7 +4207,7 @@ The value _should_ be `23`, but the two clients did not read and write to the `p
 
 ### Operators
 
-| Option      | Description                                                   |
+| Option      | 描述                                                   |
 | :---------- | :------------------------------------------------------------ |
 | `increment` | Adds `n` to the current value.                                |
 | `decrement` | Subtacts `n` from the current value.                          |
@@ -4225,7 +4227,7 @@ export type IntFieldUpdateOperationsInput = {
 }
 ```
 
-### Remarks
+### 注意
 
 - You can only perform **one** atomic update per field, per query.
 - If a field is `null`, it will not be updated by `increment`, `decrement`, `multiply`, or `divide`.
@@ -4312,7 +4314,7 @@ The examples in this section assumes that the value of the `pet` field is:
 }
 ```
 
-### Remarks
+### 注意
 
 - The implementation of JSON filtering [differs between database connectors](../../../concepts/components/prisma-client/working-with-fields/working-with-json-fields)
 - Filtering is case sensitive in PostgreSQL and does not yet support `mode`
@@ -4566,7 +4568,7 @@ const getUsers = await prisma.user.findMany({
 </tab>
 </TabbedContent>
 
-The following query returns all users where the `sanctuaries` array contains _all_ the values in the given array:
+The following query returns all users where the `sanctuaries` array contains _所有_ the values in the given array:
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4691,7 +4693,7 @@ Client-level methods are prefixed by `$`.
 
 The `$disconnect()` method closes the database connections that were established when `$connect` was called and stops the process that was running Prisma's query engine. See [Connection management](../../..//concepts/components/prisma-client/working-with-prismaclient/connection-management) for an overview of `$connect()` and `$disconnect()`.
 
-#### Remarks
+#### 注意
 
 - `$disconnect()` returns a `Promise`, so you should call it inside an `async` function with the `await` keyword.
 
@@ -4706,7 +4708,7 @@ $disconnect(): Promise<void>
 
 The `$connect()` method establishes a physical connection to the database via Prisma's query engine. See [Connection management](../../..//concepts/components/prisma-client/working-with-prismaclient/connection-management) for an overview of `$connect()` and `$disconnect()`.
 
-#### Remarks
+#### 注意
 
 - `$connect()` returns a `Promise`, so you should call it inside an `async` function with the `await` keyword.
 
@@ -4743,7 +4745,7 @@ prisma.$use(async (params, next) => {
 
 `params` is an object with information to use in your middleware.
 
-| Parameter          | Description                                                                                                    |
+| Parameter          | 描述                                                                                                    |
 | :----------------- | :------------------------------------------------------------------------------------------------------------- |
 | `action`           | The query type - for example, `create` or `findMany`.                                                          |
 | `args`             | Arguments that were passed into the query - for example, `where`, `data`, or `orderBy`                         |
