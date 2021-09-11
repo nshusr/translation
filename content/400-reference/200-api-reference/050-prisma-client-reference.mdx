@@ -49,13 +49,13 @@ enum Role {
 }
 ```
 
-所有生成的示例类型（如`UserSelect`和`UserWhereUniqueInput`）都基于`User`模型。
+所有生成的示例类型（如 `UserSelect` 和 `UserWhereUniqueInput`）都基于 `User` 模型。
 
 </TopBlock>
 
 ## <inlinecode>PrismaClient</inlinecode>
 
-这一小节描述了`PrismaClient`构造函数和其参数。
+这一小节描述了 `PrismaClient` 构造函数和其参数。
 
 ### 备注
 
@@ -63,13 +63,13 @@ enum Role {
 
 ### <inlinecode>数据源(datasource)</inlinecode>
 
-修改`schema.prisma`文件中的`datasource`部分 - 例如，作为一个集成测试的一部分。参见[数据源](../../../concepts/components/prisma-schema/data-sources) <span class="concept"></span>
+修改 `schema.prisma` 文件中的 `datasource` 部分 - 例如，作为一个集成测试的一部分。参见[数据源](../../../concepts/components/prisma-schema/data-sources) <span class="concept"></span>
 
 #### 属性
 
 | 属性 | 值                            | 描述                                                      |
 | ---- | ----------------------------- | --------------------------------------------------------- |
-| `db` | `{ url: 'file:./dev_qa.db' }` | 数据库 [连接地址](../database-reference/connection-urls). |
+| `db` | `{ url: 'file:./dev_qa.db' }` | 数据库[连接地址](../database-reference/connection-urls)。 |
 
 #### 备注
 
@@ -656,16 +656,16 @@ main()
 
 #### 选项
 
-| 名称       | 类型                                                          | 必填 | 描述                                                                                                                   |
-| ---------- | ------------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| `where`    | `UserWhereInput`                                              | 否   | 将模型所有字段包装在一个类型中，以便可以通过任何属性过滤列。表。                                                       |
-| `orderBy`  | `XOR<Enumerable<PostOrder`<br />`ByInput>, PostOrderByInput>` | 否   | 允许您按任何属性对返回的列表进行排序。                                                                                 |
-| `skip`     | `number`                                                      | 否   | 指定应跳过列表中返回的对象的数量。                                                                                     |
-| `cursor`   | `UserWhereUniqueInput`                                        | 否   | 指定列表开始的位置（该值通常指定一个 id 或其他唯一值）。                                                               |
+| 名称       | 类型                                                          | 必填 | 描述                                                                                                               |
+| ---------- | ------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------ |
+| `where`    | `UserWhereInput`                                              | 否   | 将模型所有字段包装在一个类型中，以便可以通过任何属性过滤列。表。                                                   |
+| `orderBy`  | `XOR<Enumerable<PostOrder`<br />`ByInput>, PostOrderByInput>` | 否   | 允许您按任何属性对返回的列表进行排序。                                                                             |
+| `skip`     | `number`                                                      | 否   | 指定应跳过列表中返回的对象的数量。                                                                                 |
+| `cursor`   | `UserWhereUniqueInput`                                        | 否   | 指定列表开始的位置（该值通常指定一个 id 或其他唯一值）。                                                           |
 | `take`     | `number`                                                      | 否   | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。 |
-| `select`   | `XOR<PostSelect, null>`                                       | 否   | [指定要包含的属性](../../concepts/components/prisma-client/select-fields) 在返回的对象上。                             |
-| `include`  | `XOR<PostInclude, null>`                                      | 否   | [指定急切加载哪些关系](../../concepts/components/prisma-client/relation-queries) 在返回的对象上。                      |
-| `distinct` | `Enumerable<UserDistinctFieldEnum>`                           | 否   | 允许您按特定的字段来过滤掉重复的行。 - 例如仅返回不同标题的“帖子”。                                                    |
+| `select`   | `XOR<PostSelect, null>`                                       | 否   | [指定要包含的属性](../../concepts/components/prisma-client/select-fields) 在返回的对象上。                         |
+| `include`  | `XOR<PostInclude, null>`                                      | 否   | [指定急切加载哪些关系](../../concepts/components/prisma-client/relation-queries) 在返回的对象上。                  |
+| `distinct` | `Enumerable<UserDistinctFieldEnum>`                           | 否   | 允许您按特定的字段来过滤掉重复的行。 - 例如仅返回不同标题的“帖子”。                                                |
 
 #### 返回类型
 
@@ -706,7 +706,7 @@ const user = await prisma.user.findMany({
 
 ### <inlinecode>create</inlinecode>
 
-`create` 创建一个新的数据库记录。
+`create` 创建一条新的数据库记录。
 
 #### 选项
 
@@ -725,7 +725,7 @@ const user = await prisma.user.findMany({
 
 #### 注意
 
-- 你可以使用 [`create`](#create-1) 来创建一个嵌套的记录。例如，你可以同时创建一个 `User` 和两个 `Post` 记录。
+- 你可以使用 [`create`](#create-1) 来创建一条嵌套的记录。例如，你可以同时创建一条 `User` 和两条 `Post` 记录。
 
 #### 参考
 
@@ -907,7 +907,7 @@ export type UserUpsertArgs = {
 
 #### 例子
 
-##### 更新（如果存在）或创建一个 `email` 为 `alice@prisma.io` 的 `User` 记录
+##### 更新（如果存在）或创建一条 `email` 为 `alice@prisma.io` 的 `User` 记录
 
 ```ts
 const user = await prisma.user.upsert({
@@ -1120,8 +1120,8 @@ const deleteUser = await prisma.user.updateMany({
 
 #### 选项
 
-| 名称    | 类型             | 必填 | 描述                                                |
-| ------- | ---------------- | ---- | --------------------------------------------------- |
+| 名称    | 类型             | 必填 | 描述                                                 |
+| ------- | ---------------- | ---- | ---------------------------------------------------- |
 | `where` | `UserWhereInput` | 否   | 包装模型的 _所有_ 字段，以便可以按任何字段过滤列表。 |
 
 #### 返回类型
@@ -1168,21 +1168,21 @@ const deletedUserCount = await prisma.user.deleteMany({
 
 #### 选项
 
-| 名称       | 类型                                                          | 必填 | 描述                                                                                                                                                                                                      |
-| ---------- | ------------------------------------------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`    | `UserWhereInput`                                              | 否   | 将_所有_模型字段包装在一个类型中，以便可以通过任何属性过滤列表。                                                                                                                      |
-| `cursor`   | `UserWhereUniqueInput`                                        | 否   | 指定列表的位置（该值通常指定一个 `id` 或另一个唯一值）。                                                                                                                                                  |
-| `skip`     | `number`                                                      | 否   | 指定应跳过列表中返回的对象的数量。                                                                                                                                 |
-| `take`     | `number`                                                      | 否   | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。|
-| `orderBy`  | `XOR<Enumerable<PostOrder`<br />`ByInput>, PostOrderByInput>` | 否   | 允许您按任何属性对返回的列表进行排序。                                                                                                                                                         |
-| `distinct` | `Enumerable<UserDistinctFieldEnum>`                           | 否   | 允许您按特定字段过滤掉重复的行 -例如，仅返回不同的 `Post` 标题。                                                                                                 |
-| `select`   | `UserCountAggregateInputType`                                 | 否   | 选择要计算的字段（非 `null` 值） -您也可以计算`_all`。                                                                                                                             |
+| 名称       | 类型                                                          | 必填 | 描述                                                                                                               |
+| ---------- | ------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------ |
+| `where`    | `UserWhereInput`                                              | 否   | 将*所有*模型字段包装在一个类型中，以便可以通过任何属性过滤列表。                                                   |
+| `cursor`   | `UserWhereUniqueInput`                                        | 否   | 指定列表的位置（该值通常指定一个 `id` 或另一个唯一值）。                                                           |
+| `skip`     | `number`                                                      | 否   | 指定应跳过列表中返回的对象的数量。                                                                                 |
+| `take`     | `number`                                                      | 否   | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。 |
+| `orderBy`  | `XOR<Enumerable<PostOrder`<br />`ByInput>, PostOrderByInput>` | 否   | 允许您按任何属性对返回的列表进行排序。                                                                             |
+| `distinct` | `Enumerable<UserDistinctFieldEnum>`                           | 否   | 允许您按特定字段过滤掉重复的行 -例如，仅返回不同的 `Post` 标题。                                                   |
+| `select`   | `UserCountAggregateInputType`                                 | 否   | 选择要计算的字段（非 `null` 值） -您也可以计算`_all`。                                                             |
 
 #### 返回类型
 
-| 返回类型                       | 例子                     | 描述                   |
+| 返回类型                       | 例子                     | 描述                          |
 | ------------------------------ | ------------------------ | ----------------------------- |
-| `number`                       | `29`                     | 记录条数。         |
+| `number`                       | `29`                     | 记录条数。                    |
 | `UserCountAggregateOutputType` | `{ _all: 27, name: 10 }` | 如果使用了 `select`，则返回。 |
 
 #### 参考
@@ -1260,19 +1260,19 @@ const c = await prisma.user.count({
 
 #### 选项
 
-| 名称       | 类型                                                         | 必填 | 描述                                                                                                                                                                                               |
-| ---------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`    | `UserWhereInput`                                             | 否       | 将_所有_模型字段包装在一个类型中，以便可以通过任何属性过滤列表。                                                                                                                      |
-| `orderBy`  | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | 否       | 允许您按任何属性对返回的列表进行排序。                                                                                                                                                         |
-| `cursor`   | `UserWhereUniqueInput`                                       | 否       | 指定列表的位置（该值通常指定一个 `id` 或另一个唯一值）。                                                                                                      |
-| `skip`     | `number`                                                     | 否       | 指定应跳过列表中返回的对象的数量。                                                                                                                                 |
-| `take`     | `number`                                                     | 否       | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。 |
-| `distinct` | `Enumerable<UserDistinctFieldEnum>`                          | 否       | 允许您按特定字段过滤掉重复的行 -例如，仅返回不同的 `Post` 标题。                                                                                                 |
-| `_count`   | `true`                                                       | 否       | 返回匹配记录或非空字段的数量。                                                                                                                                                 |
-| `_avg`     | `UserAvgAggregateInputType`                                  | 否       | 返回指定字段的所有值的平均值。                                                                                                                                                  |
-| `_sum`     | `UserSumAggregateInputType`                                  | 否       | 返回指定字段的所有值的总和。                                                                                                                                                    |
-| `_min`     | `UserMinAggregateInputType`                                  | 否       | 返回指定字段的最小可用值。                                                                                                                                              |
-| `_max`     | `UserMaxAggregateInputType`                                  | 否       | 返回指定字段的最大可用值。                                                                                                                                               |
+| 名称       | 类型                                                         | 必填 | 描述                                                                                                               |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------------------------------------------------------------ |
+| `where`    | `UserWhereInput`                                             | 否   | 将*所有*模型字段包装在一个类型中，以便可以通过任何属性过滤列表。                                                   |
+| `orderBy`  | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | 否   | 允许您按任何属性对返回的列表进行排序。                                                                             |
+| `cursor`   | `UserWhereUniqueInput`                                       | 否   | 指定列表的位置（该值通常指定一个 `id` 或另一个唯一值）。                                                           |
+| `skip`     | `number`                                                     | 否   | 指定应跳过列表中返回的对象的数量。                                                                                 |
+| `take`     | `number`                                                     | 否   | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。 |
+| `distinct` | `Enumerable<UserDistinctFieldEnum>`                          | 否   | 允许您按特定字段过滤掉重复的行 -例如，仅返回不同的 `Post` 标题。                                                   |
+| `_count`   | `true`                                                       | 否   | 返回匹配记录或非空字段的数量。                                                                                     |
+| `_avg`     | `UserAvgAggregateInputType`                                  | 否   | 返回指定字段的所有值的平均值。                                                                                     |
+| `_sum`     | `UserSumAggregateInputType`                                  | 否   | 返回指定字段的所有值的总和。                                                                                       |
+| `_min`     | `UserMinAggregateInputType`                                  | 否   | 返回指定字段的最小可用值。                                                                                         |
+| `_max`     | `UserMaxAggregateInputType`                                  | 否   | 返回指定字段的最大可用值。                                                                                         |
 
 #### 参考
 
@@ -1362,19 +1362,19 @@ const setValue = await prisma.user.aggregate({
 
 #### 选项
 
-| 名称      | 类型                                                         | 必填 | 描述                                                                                                                                                                                               |
-| --------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `where`   | `UserWhereInput`                                             | 否       | 将_所有_模型字段包装在一个类型中，以便可以通过任何属性过滤列表。                                                                                                                      |
-| `orderBy` | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | 否       | 允许您按也存在于 `by` 中的任何属性对返回的列表进行排序。                                                                                                                            |
-| `by`      | `Array<UserScalarFieldEnum>`                                 | 否       | 指定作为记录分组依据的字段或字段组合。                                                                                                                                         |
-| `having`  | `UserScalarWhereWithAggregatesInput`                         | 否       | 允许您按聚合值过滤组 -例如，仅返回平均年龄小于 50 岁的组。                                                                                 |
-| `skip`    | `number`                                                     | 否       | 指定应跳过列表中返回的对象的数量。                                                                                                                                 |
-| `take`    | `number`                                                     | 否       | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。 |
-| `_count`  | `true`                                                       | 否       | 返回匹配记录或非空字段的数量。                                                                                                                                                 |
-| `_avg`    | `UserAvgAggregateInputType`                                  | 否       | 返回指定字段的所有值的平均值。                                                                                                                                                  |
-| `_sum`    | `UserSumAggregateInputType`                                  | 否       | 返回指定字段的所有值的总和。                                                                                                                                                    |
-| `_min`    | `UserMinAggregateInputType`                                  | 否       | 返回指定字段的最小可用值。                                                                                                                                              |
-| `_max`    | `UserMaxAggregateInputType`                                  | 否       | 返回指定字段的最大可用值。                                                                                                                                               |
+| 名称      | 类型                                                         | 必填 | 描述                                                                                                               |
+| --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------------------------------------------------------------ |
+| `where`   | `UserWhereInput`                                             | 否   | 将*所有*模型字段包装在一个类型中，以便可以通过任何属性过滤列表。                                                   |
+| `orderBy` | `XOR<Enumerable<UserOrderByInput>,`<br />`UserOrderByInput>` | 否   | 允许您按也存在于 `by` 中的任何属性对返回的列表进行排序。                                                           |
+| `by`      | `Array<UserScalarFieldEnum>`                                 | 否   | 指定作为记录分组依据的字段或字段组合。                                                                             |
+| `having`  | `UserScalarWhereWithAggregatesInput`                         | 否   | 允许您按聚合值过滤组 -例如，仅返回平均年龄小于 50 岁的组。                                                         |
+| `skip`    | `number`                                                     | 否   | 指定应跳过列表中返回的对象的数量。                                                                                 |
+| `take`    | `number`                                                     | 否   | 指定在列表中应该返回多少个对象（从列表的**开头**（正值）或**结尾**（负值）获取，或者从 `cursor` 位置（如果使用）。 |
+| `_count`  | `true`                                                       | 否   | 返回匹配记录或非空字段的数量。                                                                                     |
+| `_avg`    | `UserAvgAggregateInputType`                                  | 否   | 返回指定字段的所有值的平均值。                                                                                     |
+| `_sum`    | `UserSumAggregateInputType`                                  | 否   | 返回指定字段的所有值的总和。                                                                                       |
+| `_min`    | `UserMinAggregateInputType`                                  | 否   | 返回指定字段的最小可用值。                                                                                         |
+| `_max`    | `UserMaxAggregateInputType`                                  | 否   | 返回指定字段的最大可用值。                                                                                         |
 
 #### 参考
 
@@ -1466,7 +1466,7 @@ const groupUsers = await prisma.user.groupBy({
 #### 注意
 
 - 您不能在同一级别上组合使用 `select` 和 `include`。
-- 在 [2.20.0](https://github.com/prisma/prisma/releases/2.20.0)及更高版本, 你可以[选择一个`_count`个关系] (#select-a-_count-of-relations).
+- 在 [2.20.0](https://github.com/prisma/prisma/releases/2.20.0)及更高版本, 你可以[选择一个`_count`个关系] (#select-a-\_count-of-relations).
 
 #### 参考
 
@@ -1514,7 +1514,6 @@ const result = await prisma.user.findUnique({
 </CodeWithResult>
 
 ##### 选择多个 `User` 记录的 `name` 和 `profileViews` 字段
-
 
 <CodeWithResult>
 <cmd>
@@ -1684,7 +1683,7 @@ const result = await prisma.user.findMany({
 
 #### `select` 的生成类型
 
-以下示例演示了如何将 [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) 与 `select` 结合使用： 
+以下示例演示了如何将 [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) 与 `select` 结合使用：
 
 - `SelectAndInclude`
 - `UserSelect`
@@ -1807,7 +1806,7 @@ const usersWithCount = await prisma.user.findMany({
 
 ### <inlinecode>where</inlinecode>
 
-`where` 定义了一个或多个 [过滤器](#filter-conditions-and-operators)，可用于过滤记录属性（如用户的电子邮件地址）或相关记录属性（如用户最近的前 10 篇帖子）标题）。 
+`where` 定义了一个或多个 [过滤器](#filter-conditions-and-operators)，可用于过滤记录属性（如用户的电子邮件地址）或相关记录属性（如用户最近的前 10 篇帖子）标题）。
 
 #### 参考
 
@@ -1877,7 +1876,7 @@ const whereNameIs = Prisma.validator<Prisma.UserWhereInput>()({
 ```
 
 - `UserWhereUniqueInput` 这种类型的工作原理是公开模型上的任何唯一字段。分配了 `@id` 的字段被认为是唯一的，
-  正如一个分配的 `@unique`。 
+  正如一个分配的 `@unique`。
 
 ```ts
 // UserWhereUniqueInput
@@ -1955,9 +1954,9 @@ const publishAllPosts =
 
 #### 输入
 
-| 名称   | 描述                  |
-| ------ | ---------------------------- |
-| `asc`  | 升序 (A &rarr; Z)  |
+| 名称   | 描述              |
+| ------ | ----------------- |
+| `asc`  | 升序 (A &rarr; Z) |
 | `desc` | 降序 (Z &rarr; A) |
 
 #### 参考
@@ -1999,9 +1998,9 @@ export declare const SortOrder: {
 
 #### 例子
 
-##### 排序 `User` 按 `email` 字段
+##### 按 `email` 字段排序 `User` 记录
 
-以下示例返回所有 `User` 记录按 `email` 升序排序：
+以下示例按 `email` 升序排序 `User` 所有记录：
 
 ```ts
 const users = await prisma.user.findMany({
@@ -2011,7 +2010,7 @@ const users = await prisma.user.findMany({
 })
 ```
 
-以下示例返回所有 `User` 记录按 `email` 降序排序：
+以下示例按 `email` 降序排序 `User` 所有记录：
 
 ```ts
 const users = await prisma.user.findMany({
@@ -2021,7 +2020,7 @@ const users = await prisma.user.findMany({
 })
 ```
 
-#### 返回 `Post` 记录按关联 `User` 记录的 `name` 排序
+#### 返回按关联 `User` 记录的 `name` 排序 `Post` 记录
 
 排序关联字段是预览特性。要启用此功能，请在您的模式中添加 `orderByRelation` 到 `previewFeatures`：
 
@@ -2044,7 +2043,7 @@ const posts = await prisma.post.findMany({
 })
 ```
 
-#### 排序 `User` 按 `posts` 记录数量
+#### 按 `posts` 记录数量排序 `User` 记录
 
 排序关联计数(orderBy count)是预览特性。要启用此功能，请在您的模式中添加 `orderByRelation` 到 `previewFeatures`：
 
@@ -2067,9 +2066,9 @@ const getActiveusers = await prisma.user.findMany({
 })
 ```
 
-##### 排序 `User` 按多个字段 - `email` _和_ `role`
+##### 按多个字段 - `email` _和_ `role` 排序 `User` 记录
 
-以下示例按两个字段排序用户：- 首先按 `email`，然后按 `role`
+以下示例按两个字段排序用户：- 首先按 `email` 排序，然后按 `role` 排序
 
 <CodeWithResult>
 
@@ -2137,7 +2136,7 @@ const users = await prisma.user.findMany({
 
 </CodeWithResult>
 
-排序参数的顺序很重要 - 以下查询按 `role`，然后按 `email` 排序。不是结果的差异：
+排序参数的顺序很重要 - 以下查询按 `role`排序后，再按 `email` 排序。不是结果的差异：
 
 <CodeWithResult>
 
@@ -2205,9 +2204,9 @@ const users = await prisma.user.findMany({
 
 </CodeWithResult>
 
-##### 排序 `User` 按 `email`，选择 `name` 和 `email`
+##### 按 `email`，选择 `name` 和 `email` 排序 `User` 记录
 
-The following example returns all the `name` and `email` fields of all `User` records, sorted by `email`:
+以下示例按 `email` 排序所有 `User` 记录，然后返回 `name` 和 `email` 字段：
 
 <CodeWithResult>
 
@@ -2250,12 +2249,12 @@ const users3 = await prisma.user.findMany({
 
 </CodeWithResult>
 
-##### Sort `User` records by `email` and sort nested `Post` records by `title`
+##### 按 `email` 排序 `User` 记录，并按 `title` 排序嵌套的 `Post` 记录
 
-The following example:
+下面的例子：
 
-- Returns all `User` records sorted by `email`
-- For each `User` record, returns the `title` field of all nested `Post` records sorted by `title`
+- 返回所有 `User` 记录按 `email` 排序
+- 对于每个 `User` 记录，返回按 `title` 排序的所有嵌套 `Post` 记录的 `title` 字段
 
 <CodeWithResult>
 
@@ -2328,9 +2327,9 @@ const usersWithPosts = await prisma.user.findMany({
 
 </CodeWithResult>
 
-##### Sort one user's nested list of `Post` records
+##### 排序一个用户的嵌套的 `Post` 记录列表
 
-The following example retrieves a single `User` record by ID, as well as a list of nested `Post` records sorted by `title`:
+以下示例按 ID 检索一个 `User` 记录，以及按 `title` 排序嵌套的 `Post` 记录列表。
 
 <CodeWithResult>
 
@@ -2387,9 +2386,9 @@ const userWithPosts = await prisma.user.findUnique({
 
 </CodeWithResult>
 
-##### Sort by `enum`
+##### 排序按 `enum`
 
-The following sorts all `User` records by `role` (an `enum`):
+以下示例排序所有 `User` 记录按 `role` (是一个 `enum`)：
 
 <CodeWithResult>
 
@@ -2437,9 +2436,9 @@ const sort = await prisma.user.findMany({
 
 </CodeWithResult>
 
-#### Generated types for `orderBy`
+#### `orderBy` 的生成类型
 
-The following examples demonstrate how to use the [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) with `orderBy`:
+以下示例演示了如何将 [`validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) 与 `orderBy` 结合使用：
 
 - `UserOrderByInput`
   ```ts
@@ -2450,7 +2449,7 @@ The following examples demonstrate how to use the [`validator`](../../concepts/c
 
 ### <inlinecode>distinct</inlinecode>
 
-See also: [Aggregation, grouping, and summarizing](../../../concepts/components/prisma-client/aggregation-grouping-summarizing#select-distinct) <span class="concept"></span>
+参见：[聚合，分组和汇总](../../../concepts/components/prisma-client/aggregation-grouping-summarizing#select-distinct) <span class="concept"></span>
 
 #### 参考
 
@@ -2471,9 +2470,9 @@ export declare const UserDistinctFieldEnum: {
 
 #### 例子
 
-##### Select distinct on a single field
+##### 在单个字段上选择不同的内容（去重）
 
-The following example returns all distinct `city` fields, and selects only the `city` and `country` fields:
+以下示例返回所有不同的 `city` 字段，并仅选择 `city` 和 `country` 字段：
 
 <CodeWithResult  expanded={true}>
 
@@ -2504,9 +2503,9 @@ const distinctCities = await prisma.user.findMany({
 
 </CodeWithResult>
 
-##### Select distinct on multiple fields
+##### 在多个字段上选择不同
 
-The following example returns all distinct `city` _and_ `country` field combinations, and selects only the `city` and `country` fields:
+以下示例返回所有不同的 `city` _和_ `country` 字段组合，并仅选择 `city` 和 `country` 字段：
 
 <CodeWithResult expanded={true}>
 
@@ -2538,11 +2537,11 @@ const distinctCitiesAndCountries = await prisma.user.findMany({
 
 </CodeWithResult>
 
-Note that there is now a "Paris, Denmark" in addition to "Paris, France":
+请注意，现在有一个 "Paris, Denmark" 了，而不是 "Paris, France"：
 
-##### Select distinct in combination with a filter
+##### 结合过滤器选择不同
 
-The following example returns all distinct `city` _and_ `country` field combinations where the user's email contains `"prisma.io"`, and selects only the `city` and `country` fields:
+以下示例返回所有不同的 `city` _和_ `country` 字段组合，过滤出其中包含 `"prisma.io"` 的用户的邮件，并仅选择 `city` 和 `country` 字段：
 
 <CodeWithResult>
 
@@ -2578,21 +2577,21 @@ const distinctCitiesAndCountries = await prisma.user.findMany({
 
 </CodeWithResult>
 
-## Nested queries
+## 嵌套查询
 
 ### <inlinecode>create</inlinecode>
 
-A nested `create` query adds a new related record or set of records to a parent record. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>.
+嵌套的 `create` 查询会添加一个新的关联记录或记录集到父记录。请参见：[使用关系](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>。
 
 #### 注意
 
-- `create` is available as a nested query when you `create` (`prisma.user.create(...)`) a new parent record or `update` (`prisma.user.update(...)`) an existing parent record.
+- 当你 `create`（`prisma.user.create（...）`）一个新的父记录或 `update`（`prisma.user.update（...）`）时，`create`可用作嵌套查询现有的父记录。
 
-> You can use a nested `create` _or_ a nested `createMany` to create multiple related records - [each technique pros and cons](../../concepts/components/prisma-client/relation-queries/#create-a-single-record-and-multiple-related-records) <span class="concept"></span>.
+> 你可以使用一个嵌套的 `create` _或_ `createMany` 来创建多个相关记录 - [每种方法的优缺点](././concepts/components/prisma-client/relation-queries/#create-a-single-record-and-multiple-related-records) <span class="concept"></span>。
 
 #### 例子
 
-##### Create a new `User` record with a new `Profile` record
+##### 创建一条新的 `User` 记录，并且创建一条新的 `Profile` 记录
 
 ```ts highlight=5;normal
 const user = await prisma.user.create({
@@ -2605,7 +2604,7 @@ const user = await prisma.user.create({
 })
 ```
 
-##### Create a new `Profile` record with a new `User` record
+##### 创建一条新的 `Profile` 记录，并且创建一条新的 `User` 记录
 
 ```ts
 const user = await prisma.profile.create({
@@ -2618,7 +2617,7 @@ const user = await prisma.profile.create({
 })
 ```
 
-##### Create a new `User` record with a new `Post` record
+##### 创建一条新的 `User` 记录，并且创建一条新的 `Post` 记录
 
 ```ts highlight=5;normal
 const user = await prisma.user.create({
@@ -2631,9 +2630,9 @@ const user = await prisma.user.create({
 })
 ```
 
-##### Create a new `User` record with two new `Post` records
+##### 创建一条新的 `User` 记录，并且创建两条新的 `Post` 记录
 
-Because it's a one-to-many relation, you can also create several `Post` records at once by passing an array to `create`:
+因为它是一对多的关系，您还可以通过将数组传递给 `create` 来一次创建多个 `Post` 记录：
 
 ```ts highlight=5;normal
 const user = await prisma.user.create({
@@ -2653,9 +2652,9 @@ const user = await prisma.user.create({
 })
 ```
 
-You can also use a nested [`createMany`](#createmany-1) to achieve the same result.
+您还可以使用嵌套的 [`createMany`](#createmany-1) 来实现相同的结果。
 
-##### Update an existing `User` record by creating a new `Profile` record
+##### 通过创建一条新的 `Profile` 记录来更新一个现有的 `User` 记录
 
 ```ts highlight=5;normal;
 const user = await prisma.user.update({
@@ -2668,7 +2667,7 @@ const user = await prisma.user.update({
 })
 ```
 
-##### Update an existing `User` record by creating a new `Post` record
+##### 通过创建一条新的 `Post` 记录来更新一个现有的 `User` 记录
 
 ```ts
 const user = await prisma.user.update({
@@ -2683,21 +2682,21 @@ const user = await prisma.user.update({
 
 ### <inlinecode>createMany</inlinecode>
 
-A nested `createMany` query adds a new set of records to a parent record. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>.
+嵌套的 `createMany` 查询将一组新记录添加到父记录。请参阅：[使用关系](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>。
 
 #### 注意
 
-- `createMany` is available as a nested query when you `create` (`prisma.user.create(...)`) a new parent record or `update` (`prisma.user.update(...)`) an existing parent record.
-- Available in the context of a has-many relation - for example, you can `prisma.user.create(...)` a user and use a nested `createMany` to create multiple posts (posts have one user).
-- **Not** available in the context of a many-to-many relation - for example, you **cannot** you can `prisma.post.create(...)` a post and use a nested `createMany` to create categories (many posts have many categories).
-- Does not support nesting additional relations - you cannot nest an additional `create` or `createMany`.
-- Allows setting foreign keys directly - for example, setting the `categoryId` on a post.
+- 当您创建（`prisma.user.create(...)`）新的父级记录或 `update`（`prisma.user.update(...)`）时，`createMany` 可用作嵌套查询现有的父级记录。
+- 在具有多关系的上下文中可用 -例如，您可以 `prisma.user.create(...)` 一个用户并使用嵌套的 `createMany` 创建多个帖子（帖子有一个用户）。
+- **不能**在多对多关系的上下文中可用 -例如，您**不能**以`prisma.post.create(...)`一个帖子并使用嵌套的`createMany`创建类别（许多帖子有很多类别）。
+- 不支持嵌套额外的关系 - 你不能嵌套额外的 `create` 或 `createMany`。
+- 允许直接设置外键 - 例如，在一个帖子上设置 `categoryId`。
 
-> You can use a nested `create` _or_ a nested `createMany` to create multiple related records - [each technique pros and cons](../../concepts/components/prisma-client/relation-queries/#create-a-single-record-and-multiple-related-records) <span class="concept"></span>.
+> 你可以使用嵌套的 `create` _或_ 嵌套的 `createMany` 来创建多个关联记录 - [每种方法的优缺点](../../concepts/components/prisma-client/relation-queries/#create-a-single-record-and-multiple-related-records) <span class="concept"></span>.
 
 #### 例子
 
-##### Update a `User` and multiple new related `Post` records
+##### 更新一条 `User` 记录并创建多条新的关联 `Post` 记录
 
 ```ts
 const user = await prisma.user.update({
@@ -2717,11 +2716,11 @@ const user = await prisma.user.update({
 
 ### <inlinecode>set</inlinecode>
 
-`set` overwrites the value of a relation - for example, replacing a list of `Post` records with a different list. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>
+`set` 覆盖一个关系的值 - 例如，用一个不同的列表替换一个 `Post` 记录的列表。参见: [使用关系](./././concepts/components/prisma-client/relation-queries) <span class="concept"></span>
 
 #### 例子
 
-##### Update an existing `User` record by disconnecting any previous `Post` records and connecting two other existing ones
+##### 更新一个现有的 `User` 记录，断开任何以前的 `Post` 记录，并连接另外两个现有的记录。
 
 ```ts
 const user = await prisma.user.update({
@@ -2738,12 +2737,12 @@ const user = await prisma.user.update({
 
 <AlgoliaTerm name="apiReference" value="connect" />
 
-A nested `connect` query connects a record to an existing related record by specifying an ID or unique identifier. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>
+嵌套的 `connect` 查询通过指定 ID 或唯一标识符将一条记录连接到现有的相关记录。参见: [使用关系](.../.../concepts/components/prisma-client/relation-queries) <span class="concept"></span>。
 
 #### 注意
 
-- `connect` is available as a nested query when you create a new parent record or update an existing parent record.
-- If the related record does not exist, Prisma Client throws an exception:
+- 当你创建一个新的父记录或更新一个现有的父记录时，`connect` 可以作为一个嵌套查询。
+- 如果相关记录不存在，Prisma Client 会抛出一个异常。
 
   ```
   The required connected records were not found. Expected 1 records to be connected, found 0.
@@ -2751,7 +2750,7 @@ A nested `connect` query connects a record to an existing related record by spec
 
 #### 例子
 
-##### Create a new `Profile` record and connect it to an existing `User` record via unique field
+##### 创建一条新的 `Profile` 记录并通过唯一字段将其连接到一个现有的 `User` 记录
 
 ```ts
 const user = await prisma.profile.create({
@@ -2764,7 +2763,7 @@ const user = await prisma.profile.create({
 })
 ```
 
-##### Create a new `Profile` record and connect it to an existing `User` record via an ID field
+##### 创建一条新的 `Profile` 记录并通过 ID 字段将其连接到一个现有的 `User` 记录
 
 ```ts
 const user = await prisma.profile.create({
@@ -2777,7 +2776,7 @@ const user = await prisma.profile.create({
 })
 ```
 
-In [2.11.0](https://github.com/prisma/prisma/releases/2.11.0) and later, you can set the foreign key directly:
+在 [2.11.0](https://github.com/prisma/prisma/releases/2.11.0)及更高版本，你可以直接设置外键。
 
 ```ts
 const user = await prisma.profile.create({
@@ -2788,7 +2787,7 @@ const user = await prisma.profile.create({
 })
 ```
 
-##### Create a new `Post` record and connect it to an existing `User` record
+##### 创建一条新的 `Post` 记录并连接到一个现有的 `User` 记录
 
 ```ts
 const user = await prisma.post.create({
@@ -2801,7 +2800,7 @@ const user = await prisma.post.create({
 })
 ```
 
-##### Update an existing `User` record by connecting it to an existing `Profile` record
+##### 更新一条现有的 `User` 记录，并将其连接到一个现有的 `Profile` 记录
 
 ```ts
 const user = await prisma.user.update({
@@ -2814,7 +2813,7 @@ const user = await prisma.user.update({
 })
 ```
 
-##### Update an existing `User` record by connecting it to two existing `Post` records
+##### 更新一条现有的 `User` 记录，并将其连接到两个现有的 `Post` 记录
 
 ```ts
 const user = await prisma.user.update({
@@ -2831,13 +2830,13 @@ const user = await prisma.user.update({
 
 <AlgoliaTerm name="apiReference" value="connectOrCreate" />
 
-`connectOrCreate` _either_ connects a record to an existing related record by ID or unique identifier _or_ creates a new related record if the record does not exist. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>
+`connectOrCreate` 通过 ID 或唯一标识符将一条记录连接到现有的相关记录，或者如果该记录不存在，则创建一个新的相关记录。参见。[使用关系](.../.../concepts/components/prisma-client/relation-queries) <span class="concept"></span>。
 
 #### 注意
 
 <!-- prettier-ignore-start -->
 
-- Multiple `connectOrCreate` queries that run _as concurrent transactions_ can result in a **race condition**. Consider the following example, where two queries attempt to `connectOrCreate` a blog post tag named `computing` at the same time (tag names must be unique):
+- 运行 _作为并发事务_ 的多个 `ConnectCreate` 查询可能会导致**竞争条件** 。考虑以下示例，其中两个查询尝试同时 `connectOrCreate` 一个名为 `computing` 的博客文章标签（标签名称必须是唯一的）：
 
   <TabbedContent tabs={[<FileWithIcon text="Query A" icon="code"/>, <FileWithIcon text="Query B" icon="code"/>]}>
   <tab>
@@ -2896,30 +2895,30 @@ const user = await prisma.user.update({
   </tab>
   </TabbedContent>
 
-  If query A and query B overlap in the following way, query A results in an exception:
+  如果查询 A 和查询 B 在以下方式重叠，查询 A 结果会导致异常：
 
-  | Query A (Fail ❌)                                                | Query B (Success ✅)                                             |
+  | 查询 A (失败 ❌)                                                | 查询 B (成功 ✅)                                             |
   | :--------------------------------------------------------------- | :--------------------------------------------------------------- |
-  | Query hits server, starts transaction A                          | Query hits server, starts transaction B                          |
-  |                                                                  | Find record where `tagName` equals `computing`, record not found |
-  | Find record where `tagName` equals `computing`, record not found |                                                                  |
-  |                                                                  | Create record where `tagName` equals `computing` and connect     |
-  | Create record where `tagName` equals `computing`                 |                                                                  |
-  | Unique violation, record already created by transaction B        |                                                                  |
+  | 查询到达服务器，启动事物 A                          | 查询到达服务器，启动事物 B                          |
+  |                                                                  | 查找 `tagName` 等于 `computing` 的记录，未找到记录 |
+  | 查找 `tagName` 等于 `computing` 的记录，未找到记录 |                                                                  |
+  |                                                                  | 创建 `tagName` 等于 `computing` 的记录并连接     |
+  | 创建 `tagName` 等于 `computing` 的记录                 |                                                                  |
+  | 唯一的违规异常, 记录已由事物 B 创建        |                                                                  |
 
-  To work around this scenario, we recommend catching the unique violation exception (`PrismaClientKnownRequestError`, error `P2002`) and retrying failed queries.
+  绕过这种情况，我们建议捕获唯一的违规异常（`PrismaClientKnownRequestError`，错误 `p2002`）和重试失败的查询。
 
 <!-- prettier-ignore-end -->
 
 #### 例子
 
-##### Create a new `Profile` record, then connect it to an existing `User` record _or_ create a new `User`
+##### 创建一个新的 `Profile` 记录，然后将其连接到一个现有的 `User` 记录，*或者*创建一个新的 `User`
 
-The following example:
+以下示例：
 
-1. Creates a `Profile`
-2. Attempts to connect the profile to a `User` where the email address is `alice@prisma.io`
-3. Creates a new user if a user if a matching user does not exist
+1. 创建一个 `Profile`
+2. 尝试将 `Profile` 连接到 `User`，其中电子邮件地址是 `Alice@Prisma.io`
+3. 如果匹配的用户不存在，则创建一个新的用户
 
 ```ts
 const user = await prisma.profile.create({
@@ -2934,7 +2933,7 @@ const user = await prisma.profile.create({
 })
 ```
 
-##### Create a new `Post` record and connect it to an existing `User` record, _or_ create a new `User`
+##### 创建一个新的 `Post` 记录并将其连接到一个现有的 `User` 记录，*或者*创建一个新的 `User`
 
 ```ts
 const user = await prisma.post.create({
@@ -2950,12 +2949,12 @@ const user = await prisma.post.create({
 })
 ```
 
-##### Update an existing `User` record by connecting it to an existing `Profile` record, _or_ creating a new `Profile` record
+##### 更新现有的 `User` 记录，将其与现有的 `Profile` 记录连接起来，*或*创建一个新的 `Profile` 记录。
 
-The following example:
+以下示例：
 
-2. Attempts to connect the user to a `Profile` with an `id` of `20`
-3. Creates a new profile if a matching profile does not exist
+2. 尝试连接 `id` 为 `20` 的用户到一个 `Profile`
+3. 如果匹配的 profile 不存在，则创建一个 profile
 
 ```ts
 const updateUser = await prisma.user.update({
@@ -2973,7 +2972,7 @@ const updateUser = await prisma.user.update({
 })
 ```
 
-##### Update an existing `User` record by connect it to two existing `Post` records, or creating two new `Post` records
+##### 通过将现有的 `User` 记录连接到两个 `Post` 记录，或创建两个新的 `Post` 记录，来更新一个现有的 `User` 记录
 
 ```ts
 const user = await prisma.user.update({
@@ -2999,15 +2998,15 @@ const user = await prisma.user.update({
 
 <AlgoliaTerm name="apiReference" value="disconnect" />
 
-A nested `disconnect` query breaks the connection between a parent record and a related record, but does not delete either record. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>
+嵌套的 `disconnect` 查询中断父记录和相关记录之间的连接，但不会删除任一记录。请参阅：[使用关联](../../../concepts/components/prisma-client/relation-queries) <span class="concept"></span>
 
 #### 注意
 
-- `disconnect` is only available if the relation is optional.
-- If the relationship you are attempting to disconnect does not exist:
+- `disconnect` 仅在关系是可选的情况下可用。
+- 如果您试图断开的关系不存在:
 
-  - ([In 2.21.0 and later](https://github.com/prisma/prisma/releases/tag/2.21.0)), the operation does nothing
-  - (Before [2.21.0](https://github.com/prisma/prisma/releases/tag/2.21.0)) Prisma Client throws an exception if the provided ID or unique identifier is not connected:
+  - ([在 2.21.0 和更高版本](https://github.com/prisma/prisma/releases/tag/2.21.0))，什么操作也不做
+  - ([2.21.0 之前](https://github.com/prisma/prisma/releases/tag/2.21.0)) 如果提供的 ID 或唯一标识符没有连接，Prisma Client 抛出异常:
 
     ```
     The records for relation `PostToUser` between the `User` and `Post` models are not connected.
@@ -3015,7 +3014,7 @@ A nested `disconnect` query breaks the connection between a parent record and a 
 
 #### 例子
 
-##### Update an existing `User` record by disconnecting the `Profile` record it's connected to
+##### 通过断开连接的 `Profile` 记录来更新现有的 `User` 记录
 
 ```ts
 const user = await prisma.user.update({
@@ -3028,7 +3027,7 @@ const user = await prisma.user.update({
 })
 ```
 
-##### Update an existing `User` record by disconnecting two `Post` records it's connected to
+##### 通过断开连接的两个 `Post` 记录来更新一个现有的 `User` 记录
 
 ```ts
 const user = await prisma.user.update({
@@ -3045,18 +3044,18 @@ const user = await prisma.user.update({
 
 <AlgoliaTerm name="apiReference" value="update" />
 
-A nested `update` query updates one or more related records where the parent record's ID is `n`. See: [Working with relations](../../../concepts/components/prisma-client/relation-queries#update-a-specific-related-record) <span class="concept"></span>
+嵌套的 `update` 查询更新一个或多个相关记录，其中父记录的 ID 为 `n`。参见：[使用关系](../../../concepts/components/prisma-client/relation-queries#update-a-specific-related-record) <span class="concept"></span>
 
 #### 注意
 
-- Nested `update` queries are only available in the context of a top-level `update` query (for example, `prisma.user.update(...)`).
-- If the parent record does not exist, Prisma Client throws an exception:
+- 嵌套的 `update` 查询只在顶级 `update` 查询的上下文中可用 (例如，' prisma.user.update(…)')。
+- 如果父记录不存在，Prisma Client 抛出异常:
 
   ```
   AssertionError("Expected a valid parent ID to be present for nested update to-one case.")
   ```
 
-- If the related record that you want to update does not exist, Prisma Client throws an exception:
+- 如果要更新的相关记录不存在，Prisma Client 抛出异常:
 
   ```
   AssertionError("Expected a valid parent ID to be present for nested update to-one case.")
@@ -3064,7 +3063,7 @@ A nested `update` query updates one or more related records where the parent rec
 
 #### 例子
 
-##### Update an existing `User` record by updating the `Profile` record it's connected to
+##### 通过更新连接到的 `Profile` 记录来更新现有的 `User` 记录
 
 ```ts
 const user = await prisma.user.update({
@@ -3077,7 +3076,7 @@ const user = await prisma.user.update({
 })
 ```
 
-##### Update an existing `User` record by updating two `Post` records it's connected to
+##### 通过更新连接到的两个 `Post` 记录来更新一个现有的 `User` 记录
 
 ```ts
 const user = await prisma.user.update({
@@ -3103,11 +3102,11 @@ const user = await prisma.user.update({
 
 <AlgoliaTerm name="apiReference" value="upsert" />
 
-A nested `upsert` query updates a related record if it exists, or creates a new related record.
+嵌套的 `upsert` 查询在相关记录存在的情况下更新相关记录，或者创建新的相关记录。
 
 #### 例子
 
-##### Update an existing `User` record by updating the `Profile` record it's connected to or creating a new one (_upsert_)
+##### 通过更新连接到的 `Profile` 记录或创建一个新记录来更新现有的 `User` 记录 (_upsert_)
 
 ```ts
 const user = await prisma.user.update({
@@ -3123,7 +3122,7 @@ const user = await prisma.user.update({
 })
 ```
 
-##### Update an existing `User` record by updating two `Post` record it's connected to or creating new ones (_upsert_)
+##### 通过更新两个已连接的 `Post` 记录或创建新的 `User` 记录来更新现有的 `User` 记录 (_upsert_)
 
 ```ts
 const user = await prisma.user.update({
@@ -3151,15 +3150,15 @@ const user = await prisma.user.update({
 
 <AlgoliaTerm name="apiReference" value="delete" />
 
-A nested `delete` query deletes a related record. The parent record is not deleted.
+嵌套的 `delete` 查询删除相关记录。父记录没有被删除。
 
 #### 注意
 
-- `delete` is only available if the relation is optional.
+- `delete` 仅在关系是可选的情况下可用。
 
 #### 例子
 
-##### Update an existing `User` record by deleting the `Profile` record it's connected to
+##### 更新现有的 `User` 记录，删除连接到的 `Profile` 记录。
 
 ```ts
 const user = await prisma.user.update({
@@ -3172,7 +3171,7 @@ const user = await prisma.user.update({
 })
 ```
 
-##### Update an existing `User` record by deleting two `Post` records it's connected to
+##### 更新现有的 `User` 记录，删除连接到的两条 `Post` 记录。
 
 ```ts
 const user = await prisma.user.update({
@@ -3189,11 +3188,11 @@ const user = await prisma.user.update({
 
 <AlgoliaTerm name="apiReference" value="updateMany" />
 
-A nested `updateMany` updates a list of related records and supports filtering - for example, you can update a user's unpublished posts.
+嵌套的 `updateMany` 更新相关记录列表并支持过滤 — 例如，你可以更新用户未发布的帖子。
 
 #### 例子
 
-##### Update all unpublished posts belonging to a specific user
+##### 更新属于特定用户的所有未发布的帖子
 
 ```ts
 const result = await prisma.user.update({
@@ -3219,11 +3218,11 @@ const result = await prisma.user.update({
 
 <AlgoliaTerm name="apiReference" value="deleteMany" />
 
-A nested `deleteMany` deletes related records and supports filtering. For example, you can delete a user's posts while updating other properties of that user.
+嵌套的 `deleteMany` 删除相关记录并支持过滤。例如，您可以删除用户的帖子，同时更新该用户的其他属性。
 
 #### 例子
 
-##### Delete all posts belonging to a specific user as part of an update
+##### 删除所有属于特定用户的帖子作为更新的一部分
 
 ```ts
 const result = await prisma.user.update({
@@ -3239,15 +3238,15 @@ const result = await prisma.user.update({
 })
 ```
 
-## Filter conditions and operators
+## 过滤条件和运算符
 
 ### <inlinecode>equals</inlinecode>
 
-Value equals `n`.
+值等于 `n`.
 
 #### 例子
 
-##### Return all users where `name` equals `"Eleanor"`
+##### 返回所有 `name` 等于 `"Eleanor"` 的用户
 
 ```ts
 const result = await prisma.user.findMany({
@@ -3259,7 +3258,7 @@ const result = await prisma.user.findMany({
 })
 ```
 
-You can also exclude the `equals`:
+你还可以排除 `equals`：
 
 ```ts
 const result = await prisma.user.findMany({
@@ -3271,11 +3270,11 @@ const result = await prisma.user.findMany({
 
 ### <inlinecode>not</inlinecode>
 
-Value does not equal `n`.
+值不等于 `n`.
 
 #### 例子
 
-##### Return all users where `name` does **not** equal `"Eleanor"`
+##### 返回所有 `name` **不等于** `"Eleanor"` 的用户
 
 ```ts
 const result = await prisma.user.findMany({
@@ -3289,15 +3288,15 @@ const result = await prisma.user.findMany({
 
 ### <inlinecode>in</inlinecode>
 
-Value `n` exists in list.
+值 `n` 存在于列表中。
 
 #### 注意
 
-- `null` values are not returned. For example, if you combine `in` and `NOT` to return user whose name is _not_ in the list, users with `null` value names are not returned.
+- `null` 不会被返回。例如，如果你结合 `in` 和 `NOT` 来返回名字**不在**列表中的用户，将不会返回名字为 `null` 的用户。
 
 #### 例子
 
-##### Get `User` records where the `id` can be found in the following list: `[22, 91, 14, 2, 5]`
+##### 获取 `id` 可以在以下列表中找到 `[22, 91, 14, 2, 5]` 的 `User` 记录
 
 ```ts
 const getUser = await prisma.user.findMany({
@@ -3307,7 +3306,7 @@ const getUser = await prisma.user.findMany({
 })
 ```
 
-##### Get `User` records where the `name` can be found in the following list: `['Saqui', 'Clementine', 'Bob']`
+##### 获取 `name` 可以在以下列表中找到 `['Saqui', 'Clementine', 'Bob']` 的 `User` 记录
 
 ```ts
 const getUser = await prisma.user.findMany({
@@ -3317,9 +3316,9 @@ const getUser = await prisma.user.findMany({
 })
 ```
 
-##### Get `User` records where `name` is **not** present in the list
+##### 获取 `User` 记录，其 `name` **不存在**列表中
 
-The following example combines `in` and [`NOT`](#not). You can also use [`notIn`](#notin).
+以下示例结合 `in` 和 [`NOT`](#not)。你还可以使用 [`notIn`](#notin)。
 
 ```ts
 const getUser = await prisma.user.findMany({
@@ -3331,20 +3330,20 @@ const getUser = await prisma.user.findMany({
 })
 ```
 
-##### Get a `User` record where at least one `Post` has at least one specified `Category`
+##### 获取一个 `User` 记录，其至少有一个 `Post` 包含至少一个指定的 `Category`
 
 ```ts
 const getUser = await prisma.user.findMany({
   where: {
-    // Find users where..
+    // 查找用户在哪里...
     posts: {
       some: {
-        // ..at least one (some) posts..
+        // ..至少一个（一些）帖子..
         categories: {
           some: {
-            // .. have at least one category ..
+            // .. 至少有一个类别..
             name: {
-              in: ['Food', 'Introductions'], // .. with a name that matches one of the following.
+              in: ['Food', 'Introductions'], // .. 具有与以下之一匹配的名称。
             },
           },
         },
@@ -3356,15 +3355,15 @@ const getUser = await prisma.user.findMany({
 
 ### <inlinecode>notIn</inlinecode>
 
-Value `n` does not exist in list.
+值 `n` 不存在于列表中。
 
 #### 注意
 
-- `null` values are not returned.
+- `null` 值是不会被返回的。
 
 #### 例子
 
-##### Get `User` records where the `id` can **not** be found in the following list: `[22, 91, 14, 2, 5]`
+##### 获取 `id` **不能**在以下列表中找到：`[22, 91, 14, 2, 5]` 的 `User` 记录
 
 ```ts
 const getUser = await prisma.user.findMany({
@@ -3376,11 +3375,11 @@ const getUser = await prisma.user.findMany({
 
 ### <inlinecode>lt</inlinecode>
 
-Value `n` is less than `x`.
+值 `n` 小于 `x`。
 
 #### 例子
 
-##### Get all `Post` records where `likes` is less than `9`
+##### 获取所有 `likes` 小于 `9` 的 `Post` 记录
 
 ```ts
 const getPosts = await prisma.post.findMany({
@@ -3394,11 +3393,11 @@ const getPosts = await prisma.post.findMany({
 
 ### <inlinecode>lte</inlinecode>
 
-Value `n` is less than _or_ equal to `x`.
+值 `n` 小于*或*等于 `x`。
 
 #### 例子
 
-##### Get all `Post` records where `likes` is less or equal to `9`
+##### 获取所有 `likes` 小于或等于 `9` 的 `Post` 记录
 
 ```ts
 const getPosts = await prisma.post.findMany({
@@ -3412,11 +3411,11 @@ const getPosts = await prisma.post.findMany({
 
 ### <inlinecode>gt</inlinecode>
 
-Value `n` is greater than `x`.
+值 `n` 大于 `x`。
 
 #### 例子
 
-##### Get all `Post` records where `likes` is greater than `9`
+##### 获取所有 `likes` 大于 `9` 的 `Post` 记录
 
 ```ts
 const getPosts = await prisma.post.findMany({
@@ -3430,11 +3429,11 @@ const getPosts = await prisma.post.findMany({
 
 ### <inlinecode>gte</inlinecode>
 
-Value `n` is greater than _or_ equal to `x`.
+值 `n` 大于*或*等于 `x`。
 
 #### 例子
 
-##### Get all `Post` records where `likes` is greater than or equal to `9`
+##### 获取所有 `likes` 大于或等于 `9` 的 `Post` 记录
 
 ```ts
 const getPosts = await prisma.post.findMany({
@@ -3448,15 +3447,13 @@ const getPosts = await prisma.post.findMany({
 
 #### 例子
 
-##### Get all `Post` records where `date_created` is greater than March 19th, 2020
+##### 获取所有 `date_created` 大于 2020 年 3 月 19 日 的 `Post` 记录
 
 ```js
 const result = await prisma.post.findMany({
   where: {
     date_created: {
-      gte: new Date(
-        '2020-03-19T14:21:00+0200'
-      ) /* Includes time offset for UTC */,
+      gte: new Date('2020-03-19T14:21:00+0200') /* 包括 UTC 的时间偏移 */,
     },
   },
 })
@@ -3464,11 +3461,11 @@ const result = await prisma.post.findMany({
 
 ### <inlinecode>contains</inlinecode>
 
-Value `n` contains `x`.
+值 `n` 包含 `x`。
 
 #### 例子
 
-##### Count all `Post` records where `content` contains `databases`
+##### 统计所有 `content` 包含 `databases` 的 `Post` 记录的数量
 
 ```js
 const result = await prisma.post.count({
@@ -3480,7 +3477,7 @@ const result = await prisma.post.count({
 })
 ```
 
-##### Count all `Post` records where `content` **does not** contain `databases`
+##### 统计所有 `content` 不包含 `databases` 的 `Post` 记录的数量
 
 ```js
 const result = await prisma.post.count({
@@ -3498,11 +3495,11 @@ const result = await prisma.post.count({
 
 #### 注意
 
-- Supported by the PostgreSQL and MongoDB connectors only
+- 仅支持 PostgreSQL 和 MongoDB 连接器
 
 #### 例子
 
-##### Get all `Post` records where `title` contains `prisma`, in a case insensitive way
+##### 获取所有 `title` 包含 `prisma` 的 `Post` 记录，不区分大小写
 
 ```js
 const result = await prisma.post.findMany({
@@ -3519,7 +3516,7 @@ const result = await prisma.post.findMany({
 
 #### 例子
 
-##### Get all `Post` records where `title` starts with `Pr` (such as `Prisma`)
+##### 获取所有 `title` 以 `Pr` 开头的 `Post` 记录（例如 `Prisma`）
 
 ```js
 const result = await prisma.post.findMany({
@@ -3533,7 +3530,7 @@ const result = await prisma.post.findMany({
 
 ### <inlinecode>endsWith</inlinecode>
 
-#### Get all `User` records where `email` ends with `prisma.io`
+#### 获取所有 `email` 结尾为 `prisma.io` `User` 记录
 
 ```js
 const result = await prisma.user.findMany({
@@ -3547,11 +3544,11 @@ const result = await prisma.user.findMany({
 
 ### <inlinecode>AND</inlinecode>
 
-All conditions must return `true`. Alternatively, pass a list of objects into the `where` clause - the [`AND` operator is not required](#get-all-post-records-where-the-content-field-contains-prisma-and-published-is-false-no-and).
+所有条件必须返回 `true`。 另外，在 `where` 条件中传递对象列表 - 这个[`AND` 操作符不是必需的](#get-all-post-records-where-the-content-field-contains-prisma-and-published-is-false-no-and)。
 
 #### 例子
 
-##### Get all `Post` records where the `content` field contains `Prisma` and `published` is `false`
+##### 获取所有 `content` 字段包含 `Prisma` 并且 `published` 为 `false` 的 `Post` 记录
 
 ```js
 const result = await prisma.post.findMany({
@@ -3572,9 +3569,9 @@ const result = await prisma.post.findMany({
 })
 ```
 
-##### Get all `Post` records where the `content` field contains `Prisma` and `published` is `false` (no `AND`)
+##### 获取所有 `content` 字段包含 `Prisma` 并且 `published` 为 `false`（没有 `AND`） 的 `Post` 记录
 
-The following format returns the same results as the previous example **without** the `AND` operator:
+以下格式返回与上一个例子相同结果（不使用 `AND` 来写）：
 
 ```js
 const result = await prisma.post.findMany({
@@ -3589,9 +3586,9 @@ const result = await prisma.post.findMany({
 })
 ```
 
-##### Get all `Post` records where the `title` field contains `Prisma` or `databases`, and `published` is `false`
+##### 获取所有 `title` 字段包含 `Prisma` 或 `databases`，并且 `published` 为 `false` 的 `Post` 记录
 
-The following example combines `OR` and `AND`:
+以下示例结合了 `OR` 和 `AND`：
 
 ```js
 const result = await prisma.post.findMany({
@@ -3617,11 +3614,11 @@ const result = await prisma.post.findMany({
 
 ### <inlinecode>OR</inlinecode>
 
-One or more conditions must return `true`.
+一个或多个条件必须返回 `true`。
 
 #### 例子
 
-##### Get all `Post` records where the `title` field contains `Prisma` or `databases`
+##### 获取所有 `title` 字段包含 `Prisma` 或 `databases` 的 `Post` 记录
 
 ```js
 const result = await prisma.post.findMany({
@@ -3642,9 +3639,9 @@ const result = await prisma.post.findMany({
 })
 ```
 
-##### Get all `Post` records where the `title` filed contains `Prisma` or `databases`, but not `SQL`
+##### 获取所有 `title` 字段包含 `Prisma` 或 `databases`，但不包含 `SQL` 的 `Post` 记录
 
-The following example combines `OR` and `NOT`:
+以下示例结合了 `OR` 和 `NOT`：
 
 ```js
 const result = await prisma.post.findMany({
@@ -3670,9 +3667,9 @@ const result = await prisma.post.findMany({
 })
 ```
 
-##### Get all `Post` records where the `title` field contains `Prisma` or `databases`, and `published` is `false`
+##### 获取所有 `title` 字段包含 `Prisma` 或 `databases`，并且 `published` 为 `false` 的 `Post` 记录
 
-The following example combines `OR` and `AND`:
+以下示例结合了 `OR` 和 `AND`：
 
 ```js
 const result = await prisma.post.findMany({
@@ -3698,11 +3695,11 @@ const result = await prisma.post.findMany({
 
 ### <inlinecode>NOT</inlinecode>
 
-All conditions must return `false`.
+所有条件必须返回 `false`。
 
 #### 例子
 
-##### Get all `Post` records where the `title` filed contains `Prisma` or `databases`, but not `SQL`
+##### 获取所有 `title` 字段包含 `Prisma` 或 `databases`，但不包含 `SQL` 的 `Post` 记录
 
 ```js
 const result = await prisma.post.findMany({
@@ -3728,7 +3725,7 @@ const result = await prisma.post.findMany({
 })
 ```
 
-##### Get all `Post` records where the `title` field contains `Prisma` or `databases`, but not `SQL`, and the related `User` record' email address does not contain `sarah`
+##### 获取所有 `title` 字段包含 `Prisma` 或 `databases`，但不包含 `SQL`，并且关联的 `User` 记录的邮箱地址不包含 `sarah` 的 `Post` 记录
 
 ```js
 const result = await prisma.post.findMany({
@@ -3764,15 +3761,15 @@ const result = await prisma.post.findMany({
 })
 ```
 
-## Relation filters
+## 关联过滤
 
 ### <inlinecode>some</inlinecode>
 
-Returns all records where **one or more** ("some") _related_ records match filtering criteria.
+返回 **一个或多个** ("some") *关联*匹配过滤条件的所有记录。
 
 #### 注意
 
-- You can use `some` without parameters to return all records with at least one relation
+- 你可以使用 `some` 不带参数返回至少有一个关系的所有记录
 
 #### 参考
 
@@ -3786,8 +3783,7 @@ export type PostFilter = {
 
 #### 例子
 
-##### Get all `User` records where _所有_ posts are published and a least one related `Post` mentions `Prisma`
-##### 获取_所有_已发布的 `用户` 帖子，并且至少有一个相关的 `Post` 提到了 `Prisma`
+##### 获取 _所有_ 的 `Post` 记录已发布，并且至少一个关联的 `Post` 记录提到了 `Prisma` 的 `User` 记录
 
 ```ts
 const result = await prisma.user.findMany({
@@ -3808,7 +3804,7 @@ const result = await prisma.user.findMany({
 
 ### <inlinecode>every</inlinecode>
 
-返回所有 **all**("every") _关联_记录匹配过滤条件的记录
+返回 **所有** ("every") *关联*匹配过滤条件的所有记录。
 
 #### 参考
 
@@ -3822,7 +3818,7 @@ export type PostFilter = {
 
 #### 例子
 
-##### 获取_全部_已发布帖子的所有 `User`，并且至少有一个相关的 `Post` 提到了 `Prisma`
+##### 获取 _所有_ 的 `Post` 记录已发布，并且至少一个关联的 `Post` 记录提到了 `Prisma` 的 `User` 记录
 
 ```ts
 const result = await prisma.user.findMany({
@@ -3843,11 +3839,11 @@ const result = await prisma.user.findMany({
 
 ### <inlinecode>none</inlinecode>
 
-Returns all records where **zero** _related_ records match filtering criteria.
+返回所有记录，其中 **零** 个关联记录匹配过滤条件。
 
 #### 注意
 
-- You can use `none` without parameters to [return all records with no relations](#get-all-user-records-with-zero-posts)
+- 可以使用不带参数的 `none` 来[返回所有没有关系的记录](#get-all-user-records-with-zero-posts)
 
 #### 参考
 
@@ -3861,7 +3857,7 @@ export type PostFilter = {
 
 #### 例子
 
-##### Get all `User` records with zero posts
+##### 获取所有不关联的 `Post` 记录的 `User` 记录
 
 ```ts
 const result = await prisma.user.findMany({
@@ -3873,7 +3869,7 @@ const result = await prisma.user.findMany({
 }
 ```
 
-##### Get all `User` records with zero published posts
+##### 获取所有未发布的 `Post` 记录的 `User` 记录
 
 ```ts
 const result = await prisma.user.findMany({
@@ -3889,7 +3885,7 @@ const result = await prisma.user.findMany({
 
 ### <inlinecode>is</inlinecode>
 
-Returns all records where related record matches filtering criteria (for example, user's name `is` Bob).
+返回所有匹配过滤条件的关联记录（例如，用户的名字是(`is`) Bob）。
 
 #### 参考
 
@@ -3902,7 +3898,7 @@ export type UserRelationFilter = {
 
 #### 例子
 
-##### Get all `Post` records where user's name is `"Bob"`
+##### 获取所有名称是 `"Bob"` 的 `Post` 记录
 
 ```ts
 const result = await prisma.post.findMany({
@@ -3918,7 +3914,7 @@ const result = await prisma.post.findMany({
 
 ### <inlinecode>isNot</inlinecode>
 
-Returns all records where related record matches filtering criteria (for example, user's name `isNot` Bob).
+返回所有匹配过滤条件的关联记录（例如，用户的名字不是(`isNot`) Bob）。
 
 #### 参考
 
@@ -3931,7 +3927,7 @@ export type UserRelationFilter = {
 
 #### 例子
 
-##### Get all `Post` records where user's name is NOT `"Bob"`
+##### 获取所有用户的名字不是 `"Bob"` 的 `Post` 记录
 
 ```ts
 const result = await prisma.post.findMany({
@@ -3945,9 +3941,9 @@ const result = await prisma.post.findMany({
 }
 ```
 
-## Scalar list methods
+## 标量列表方法
 
-### Reference
+### 参考
 
 ```ts
 export type PostUpdatetagsInput = {
@@ -3958,11 +3954,11 @@ export type PostUpdatetagsInput = {
 
 ### <inlinecode>set</inlinecode>
 
-Use `set` to overwrite the value of a scalar list field.
+使用 `set` 来覆盖一个标量列表字段的值。
 
 #### 注意
 
-- `set` is optional - you can set the value directly:
+- `set` 是可选的 - 你可以直接设置值：
 
   ```ts
   tags: ['computers', 'books']
@@ -3970,7 +3966,7 @@ Use `set` to overwrite the value of a scalar list field.
 
 #### 例子
 
-##### Set the value of `tags` to a list of string values
+##### 将 `tags` 的值设置为字符串值列表
 
 ```ts
 const setTags = await prisma.post.update({
@@ -3986,7 +3982,7 @@ const setTags = await prisma.post.update({
 }
 ```
 
-##### Set `tags` to a list of values _without_ using the `set` keyword
+##### 将 `tags` 设置为一个值的列表，_而不_ 使用 `set` 关键字。
 
 ```ts
 const setTags = await prisma.post.update({
@@ -4000,7 +3996,7 @@ const setTags = await prisma.post.update({
 }
 ```
 
-#### Set the value of `tags` to a single string value
+#### 将 `tags` 的值设置为单个字符串值
 
 ```ts
 const setTags = await prisma.post.update({
@@ -4017,16 +4013,16 @@ const setTags = await prisma.post.update({
 
 ### <inlinecode>push</inlinecode>
 
-`push` is available in version [2.20.0](https://github.com/prisma/prisma/releases/2.20.0) and later. Use `push` to add _one_ value to a scalar list field.
+`push` 在[2.20.0](https://github.com/prisma/prisma/releases/2.20.0)及更高版本中可用. 使用 `push` 将 _一个_ 值添加到标量列表字段。
 
 #### 注意
 
-- Available for PostgreSQL only.
-- You cannot push a list of values - only a single value.
+- 仅适用于 PostgreSQL。
+- 您不能使用值列表 - 只能使用一个值。
 
 #### 例子
 
-##### Add a `computing` item to the `tags` list
+##### 将 `computing` 项添加 ​​ 到 `tags` 列表
 
 ```ts
 const addTag = await prisma.post.update({
@@ -4041,21 +4037,21 @@ const addTag = await prisma.post.update({
 })
 ```
 
-## Scalar list filters
+## 标量列表过滤
 
-Scalar list filters allow you to filter by the contents of a list / array field.
+标量列表过滤允许您通过列表 / 数组字段的内容过滤。
 
 <Admonition type="warning">
 
-**Note**: Available for the **PostgreSQL** database connector in Prisma [2.15.0](https://github.com/prisma/prisma/releases/tag/2.15.0) and later **only**.
+**注意**: 仅可用于 **PostgreSQL**数据库连接器 且 Prisma [2.15.0](https://github.com/prisma/prisma/releases/tag/2.15.0) 和更高版本.
 
 </Admonition>
 
 ### 注意
 
-- Scalar list / array filters [ignore `NULL` values](../../../concepts/components/prisma-client/working-with-fields/working-with-scalar-lists-arrays#null-values-in-arrays) <span class="concept"></span>. Using `isEmpty` or `NOT` does not return records with `NULL` value lists / arrays, and `{ equals: null }` results in an error.
+- 标量列表/数组过滤[忽略 `NULL` 值](../../../concepts/components/prisma-client/working-with-fields/working-with-scalar-lists-arrays#null-values-in-arrays) <span class="concept"></span>。使用 `isEmpty` 或 `NOT` 不会返回带有 `NULL` 值列表/数组的记录，并且 `{ equals: null }` 会导致错误。
 
-### Reference
+### 参考
 
 ```ts file=index.d.ts
 export type StringNullableListFilter = {
@@ -4079,11 +4075,11 @@ export type BoolNullableListFilter = {
 
 ### <inlinecode>has</inlinecode>
 
-The given value exists in the list.
+给定的值存在于列表中
 
 #### 例子
 
-The following query returns all `Post` records where the `tags` list includes `"database"`:
+以下查询返回所有 `Post` 记录，其中 `tags` 列表包含 `"database"`:
 
 ```ts
 const posts = await client.post.findMany({
@@ -4095,7 +4091,7 @@ const posts = await client.post.findMany({
 })
 ```
 
-The following query returns all `Post` records where the `tags` list **does not** include `"database"`:
+以下查询返回所有 `Post` 记录，其中 `tags` 列表 **不** 包含 `"database"`:
 
 ```ts
 const posts = await client.post.findMany({
@@ -4111,11 +4107,11 @@ const posts = await client.post.findMany({
 
 ### <inlinecode>hasEvery</inlinecode>
 
-Every value exists in the list.
+每个值都存在于列表中。
 
 #### 例子
 
-The following query returns all `Post` records where the `tags` list includes _at least_ `"database"` _and_ `"typescript"`:
+以下查询返回所有 `Post` 记录，其中 `tags` 列表包含 _至少_ `"database"` _和_ `"typescript"`:
 
 ```ts
 const posts = await prisma.post.findMany({
@@ -4129,11 +4125,11 @@ const posts = await prisma.post.findMany({
 
 ### <inlinecode>hasSome</inlinecode>
 
-At least one value exists in the list.
+列表中至少有一个值存在。
 
 #### 例子
 
-The following query returns all `Post` records where the `tags` list `"database"` _or_ `"typescript"`:
+以下查询返回所有 `Post` 记录，其中 `tags` 列表 `"database"` _或_ `"typescript"`:
 
 ```ts
 const posts = await prisma.post.findMany({
@@ -4147,11 +4143,11 @@ const posts = await prisma.post.findMany({
 
 ### <inlinecode>isEmpty</inlinecode>
 
-The list is empty.
+该列表是空的。
 
 #### 例子
 
-The following query returns all `Post` records that have no tags:
+以下查询返回所有 `Post` 记录，其中 `tags` 列表是空的:
 
 ```ts
 const posts = await prisma.post.findMany({
@@ -4165,11 +4161,11 @@ const posts = await prisma.post.findMany({
 
 ### <inlinecode>equals</inlinecode>
 
-The list matches the given value exactly.
+该列表与给定值完全匹配。
 
 #### 例子
 
-The following query returns all `Post` records where the `tags` list include `"database"` and `"typescript"` only:
+以下查询返回所有 `Post` 记录，其中 `tags` 列表只有 `"database"` 和 `"typescript"`:
 
 ```ts
 const posts = await prisma.post.findMany({
@@ -4181,41 +4177,41 @@ const posts = await prisma.post.findMany({
 })
 ```
 
-## Atomic number operations
+## 原子序数运算
 
-Atomic operations on update is available for number field types (`Float` and `Int`). This feature allows you to update a field based on its **current** value (such as _subtracting_ or _dividing_) without risking a race condition.
+更新的原子操作可用于数字字段类型（`Float` 和 `Int`）。此功能允许您根据其 **当前**值（例如 _减法_ 或 _除法_）更新字段，而不会冒竞争条件的风险。
 
-<details><summary>Overview: Race conditions</summary>
+<details><summary>概述：竞争条件</summary>
 
-A race conditions occurs when two or more operations must be done in sequence in order to complete a task. In the following example, two clients try to increase the same field (`postCount`) by one:
+当两个或多个操作必须按顺序完成才能完成一项任务时，就会发生竞争条件。在以下示例中，两个客户端尝试将同一字段 (`postCount`) 加 1：
 
-| Client   | Operation           | Value  |
-| :------- | :------------------ | :----- |
-| Client 1 | **Get** field value | `21`   |
-| Client 2 | **Get** field value | `21`   |
-| Client 2 | **Set** field value | `22`   |
-| Client 1 | **Set** field value | `22` ✘ |
+| 客户端   | 选项            | 值     |
+| :------- | :-------------- | :----- |
+| 客户端 1 | **获取** 属性值 | `21`   |
+| 客户端 2 | **获取** 属性值 | `21`   |
+| 客户端 2 | **设置** 属性值 | `22`   |
+| 客户端 1 | **设置** 属性值 | `22` ✘ |
 
-The value _should_ be `23`, but the two clients did not read and write to the `postCount` field in sequence. Atomic operations on update combine read and write into a single operation, which prevents a race condition:
+值*应该*是 `23`，但这两个客户端并没有依次读写 `postCount` 字段。更新的原子操作将读和写合并为一个操作，这可以防止竞赛条件。
 
-| Client   | Operation                   | Value              |
-| :------- | :-------------------------- | :----------------- |
-| Client 1 | **Get and set** field value | `21` &rarr; `22`   |
-| Client 2 | **Get and set** field value | `22` &rarr; `23` ✔ |
+| 客户端   | 选项                  | 值                 |
+| :------- | :-------------------- | :----------------- |
+| 客户端 1 | **获取并设置** 属性值 | `21` &rarr; `22`   |
+| 客户端 2 | **获取并设置** 属性值 | `22` &rarr; `23` ✔ |
 
 </details>
 
-### Operators
+### 操作
 
-| Option      | 描述                                                   |
-| :---------- | :------------------------------------------------------------ |
-| `increment` | Adds `n` to the current value.                                |
-| `decrement` | Subtacts `n` from the current value.                          |
-| `multiply`  | Multiplies the current value by `n`.                          |
-| `divide`    | Divides the current value by `n`.                             |
-| `set`       | Sets the current field value. Identical to `{ myField : n }`. |
+| 选项        | 描述                                        |
+| :---------- | :------------------------------------------ |
+| `increment` | 将 `n` 添加到当前值。                       |
+| `decrement` | 从当前值减去 `n`。                          |
+| `multiply`  | 将当前值乘以 `n`。                          |
+| `divide`    | 将当前值除以 `n`。                          |
+| `set`       | 设置当前字段值。与 `{ myField : n }` 相同。 |
 
-### Reference
+### 参考
 
 ```ts file=index.d.ts
 export type IntFieldUpdateOperationsInput = {
@@ -4229,12 +4225,12 @@ export type IntFieldUpdateOperationsInput = {
 
 ### 注意
 
-- You can only perform **one** atomic update per field, per query.
-- If a field is `null`, it will not be updated by `increment`, `decrement`, `multiply`, or `divide`.
+- 您只能对每个字段、每个查询执行 **一个**原子更新。
+- 如果一个字段为 `null`，它不会被 `increment`、`decrement`、`multiply` 或 `divide` 更新。
 
 ### 例子
 
-#### Increment all `view` and `likes` fields of all `Post` records by `1`
+#### 将所有 `Post` 记录的 `view` 和 `likes` 字段值都加 1
 
 ```ts
 const updatePosts = await prisma.post.updateMany({
@@ -4249,7 +4245,7 @@ const updatePosts = await prisma.post.updateMany({
 })
 ```
 
-#### Set all `count` fields of all `Post` records to `0`
+#### 将所有 `Post` 记录的 `views` 字段值都设置为 `0`
 
 ```ts
 const updatePosts = await prisma.post.updateMany({
@@ -4261,7 +4257,7 @@ const updatePosts = await prisma.post.updateMany({
 })
 ```
 
-Can also be written as:
+也可以写成：
 
 ```ts
 const updatePosts = await prisma.post.updateMany({
@@ -4271,13 +4267,13 @@ const updatePosts = await prisma.post.updateMany({
 })
 ```
 
-## <inlinecode>JSON</inlinecode> filters
+## <inlinecode>JSON</inlinecode> 过滤器
 
-For use cases and advanced examples, see: [Working with `Json` fields](../../../concepts/components/prisma-client/working-with-fields/working-with-json-fields) <span class="concepts"></span>
+有关用例和高级示例，请参阅：[使用 `Json` 字段](../../../concepts/components/prisma-client/working-with-fields/working-with-json-fields) <span class="concepts"></span>
 
-Advanced `Json` filtering is available as a Preview feature in [2.23.0 and later](https://github.com/prisma/prisma/releases/tag/2.23.0). In earlier versions, you can [filter on the exact `Json` field value](../../../concepts/components/prisma-client/working-with-fields/working-with-json-fields#filter-on-exact-field-value).
+高级`Json` 过滤作为预览功能提供在[2.23.0 及更高版本](https://github.com/prisma/prisma/releases/tag/2.23.0)。在早期版本中，您可以[过滤确切的`Json`字段值](../../../concepts/components/prisma-client/working-with-fields/working-with-json-fields#filter-on-exact-field-value).
 
-To enable advanced filtering, add `filterJson` to `previewFeatures` in your schema:
+要启用高级过滤，请将 `filterJson` 添加到架构中的 `previewFeatures`：
 
 ```prisma
 generator client {
@@ -4289,10 +4285,11 @@ generator client {
 <Admonition type="warning">
 
 Supported by [PostgreSQL](../../../concepts/database-connectors/postgresql) <span class="concept"></span> and [MySQL](../../../concepts/database-connectors/mysql) <span class="concept"></span> with different syntaxes for the `path` option. PostgreSQL does not support filtering on object key values in arrays.
+支持[PostgreSQL](../../../concepts/database-connectors/postgresql) <span class="concept"></span> 和 [MySQL](../../../concepts/database-connectors/mysql) <span class="concept"></span> `path` 选项有不同的语法。 PostgreSQL 不支持对数组中的对象键值进行过滤。
 
 </Admonition>
 
-The examples in this section assumes that the value of the `pet` field is:
+本节中的示例假设 `pet` 字段的值为：
 
 ```json
 {
@@ -4316,12 +4313,13 @@ The examples in this section assumes that the value of the `pet` field is:
 
 ### 注意
 
-- The implementation of JSON filtering [differs between database connectors](../../../concepts/components/prisma-client/working-with-fields/working-with-json-fields)
-- Filtering is case sensitive in PostgreSQL and does not yet support `mode`
+- JSON 过滤的实现[不同数据库连接器](../../../concepts/components/prisma-client/working-with-fields/working-with-json-fields)
+- PostgreSQL 中的过滤区分大小写，尚不支持`mode`
 
 ### <inlinecode>path</inlinecode>
 
 `path` represents the location of a specific key. The following query returns all users where the nested `favourites` > `dogBreed` key equals `"Rottweiler"`.
+`path` 表示特定键的位置。 以下查询返回嵌套的 `favourites` > `dogBreed` 键等于 `"Rottweiler"`.
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4354,7 +4352,7 @@ const getUsers = await prisma.user.findMany({
 </tab>
 </TabbedContent>
 
-The following query returns all users where the nested `owned` > `cats` array contains `"Elliott"`.
+以下查询返回嵌套的 `owned` > `cats` 数组包含 `"Elliott"` 的所有用户。
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4389,11 +4387,11 @@ const getUsers = await prisma.user.findMany({
 
 <Admonition type="warning">
 
-Filtering by the key values of objects inside an array (below) is only supported by the MySQL connector.
+仅 MySQL 连接器支持按数组内对象的键值进行过滤（如下）。
 
 </Admonition>
 
-The following query returns all users where the nested `favorites` > `treats` array contains an object where the `name` value is `"Dreamies"`:
+以下查询返回所有用户，其中嵌套的 `favorites` > `treats` 数组包含一个对象，其中 `name` 值为 `"Dreamies"`：
 
 <TabbedContent tabs={[<FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4417,9 +4415,9 @@ const getUsers = await prisma.user.findMany({
 
 </TabbedContent>
 
-### <inlinecode>string_contains</inlinecode>
+### <inlinecode>字符串包含(string_contains)</inlinecode>
 
-The following query returns all users where the nested `favorites` > `catBreed` key value contains `"Van"`:
+以下查询返回嵌套的 `favorites` > `catBreed` 键值包含 `"Van"` 的所有用户：
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4453,9 +4451,9 @@ const getUsers = await prisma.user.findMany({
 
 </TabbedContent>
 
-### <inlinecode>string_starts_with</inlinecode>
+### <inlinecode>字符串起始为(string_starts_with)</inlinecode>
 
-The following query returns all users where the nested `favorites` > `catBreed` key value starts with `"Turkish"`:
+以下查询返回嵌套的 `favorites` > `catBreed` 键值以 `"Turkish"` 开头的所有用户：
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4490,9 +4488,9 @@ const getUsers = await prisma.user.findMany({
 
 </TabbedContent>
 
-### <inlinecode>string_ends_with</inlinecode>
+### <inlinecode>字符串结束为(string_ends_with)</inlinecode>
 
-The following query returns all users where the nested `favorites` > `catBreed` key value ends with `"Van"`:
+以下查询返回嵌套的 `favorites` > `catBreed` 键值以 `"Van"` 结尾的所有用户：
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4527,9 +4525,9 @@ const getUsers = await prisma.user.findMany({
 
 </TabbedContent>
 
-### <inlinecode>array_contains</inlinecode>
+### <inlinecode>数组包含(array_contains)</inlinecode>
 
-The following query returns all users where the `sanctuaries` array contains the value `"RSPCA"`:
+以下查询返回所有在 `sanctuaries` 数组中包含值 `"RSPCA"` 的用户：
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4547,7 +4545,7 @@ const getUsers = await prisma.user.findMany({
 
 <Admonition type="info">
 
-**Note**: In PostgresSQL, the value of `array_contains` must be an array and not a string, even if the array only contains a single value.
+**注意**：在 PostgresQL 中，`array_contains` 的值必须是一个数组而不是一个字符串，即使该数组只包含一个值。
 
 </Admonition>
 
@@ -4568,7 +4566,7 @@ const getUsers = await prisma.user.findMany({
 </tab>
 </TabbedContent>
 
-The following query returns all users where the `sanctuaries` array contains _所有_ the values in the given array:
+以下查询返回所有 `sanctuaries` 数组包含 _所有_ 给定数组中的值的用户
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4601,9 +4599,9 @@ const getUsers = await prisma.user.findMany({
 </tab>
 </TabbedContent>
 
-### <inlinecode>array_starts_with</inlinecode>
+### <inlinecode>数组起始为(array_starts_with)</inlinecode>
 
-The following query returns all users where the `sanctuaries` array starts with the value `"RSPCA"`:
+以下查询返回所有 `sanctuaries` 数组以 `"RSPCA"` 开头的用户：
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4621,7 +4619,7 @@ const getUsers = await prisma.user.findMany({
 
 <Admonition type="info">
 
-**Note**: In PostgresSQL, the value of `array_starts_with` must be an array and not a string, even if the array only contains a single value.
+**注意**：在 PostgresQL 中，`array startswith` 的值必须是一个数组而不是一个字符串，即使该数组只包含一个值。
 
 </Admonition>
 
@@ -4643,9 +4641,9 @@ const getUsers = await prisma.user.findMany({
 </tab>
 </TabbedContent>
 
-### <inlinecode>array_ends_with</inlinecode>
+### <inlinecode>数组结束为(array_ends_with)</inlinecode>
 
-The following query returns all users where the `sanctuaries` array ends with the value `"Alley Cat Allies"`:
+以下查询返回所有以 `"Alley Cat Allies"` 值结尾的 `sanctuaries` 数组的用户：
 
 <TabbedContent tabs={[<FileWithIcon text="PostgreSQL" icon="database"/>, <FileWithIcon text="MySQL" icon="database"/>]}>
 <tab>
@@ -4663,7 +4661,7 @@ const getUsers = await prisma.user.findMany({
 
 <Admonition type="info">
 
-**Note**: In PostgresSQL, the value of `array_ends_with` must be an array and not a string, even if the array only contains a single value.
+**注意**：在 PostgresQL 中，`array_ends_with` 的值必须是一个数组而不是一个字符串，即使该数组只包含一个值。
 
 </Admonition>
 
@@ -4684,18 +4682,18 @@ const getUsers = await prisma.user.findMany({
 </tab>
 </TabbedContent>
 
-## Client methods
+## 客户端方法(Client methods)
 
-Client-level methods are prefixed by `$`.
+客户端级方法以 `$` 为前缀
 
 <!-- prettier-ignore -->
 ### <inlinecode>$disconnect()</inlinecode>
 
-The `$disconnect()` method closes the database connections that were established when `$connect` was called and stops the process that was running Prisma's query engine. See [Connection management](../../..//concepts/components/prisma-client/working-with-prismaclient/connection-management) for an overview of `$connect()` and `$disconnect()`.
+`$disconnect()` 方法关闭在调用 `$connect` 时建立的数据库连接，并停止运行 Prisma 查询引擎的进程。见[连接管理](../../..//concepts/components/prisma-client/working-with-prismaclient/connection-management) 了解 `$connect()` 和 `$disconnect()` 的概览。
 
 #### 注意
 
-- `$disconnect()` returns a `Promise`, so you should call it inside an `async` function with the `await` keyword.
+- `$disconnect()` 返回一个 `Promise`，所以你应该在一个 `async` 函数中使用 `await` 关键字调用它。
 
 #### 参考
 
@@ -4706,11 +4704,11 @@ $disconnect(): Promise<void>
 <!-- prettier-ignore -->
 ### <inlinecode>$connect()</inlinecode>
 
-The `$connect()` method establishes a physical connection to the database via Prisma's query engine. See [Connection management](../../..//concepts/components/prisma-client/working-with-prismaclient/connection-management) for an overview of `$connect()` and `$disconnect()`.
+`$connect()` 方法通过 Prisma 的查询引擎建立到数据库的物理连接。见【连接管理】(../../..//concepts/components/prisma-client/working-with-prismaclient/connection-management) 了解 `$connect()` 和 `$disconnect()` 的概览。
 
 #### 注意
 
-- `$connect()` returns a `Promise`, so you should call it inside an `async` function with the `await` keyword.
+- `$connect()` 返回一个 `Promise`，所以你应该在一个 `async` 函数中使用 `await` 关键字调用它。
 
 #### 参考
 
@@ -4721,12 +4719,12 @@ $connect(): Promise<void>
 <!-- prettier-ignore -->
 ### <inlinecode>$on()</inlinecode>
 
-The `$on()` method allows you to subscribe to events. With those you can subscribe to [logging events](#log) or the [exit hook](../../../concepts/components/prisma-client/working-with-prismaclient/connection-management#exit-hooks).
+`$on()` 方法允许您订阅事件。有了这些你可以订阅[记录事件](#log) 或 [退出钩子](../../../concepts/components/prisma-client/working-with-prismaclient/connection-management#exit-hooks).
 
 <!-- prettier-ignore -->
 ### <inlinecode>$use()</inlinecode>
 
-The `$use()` method adds [middleware](../../../concepts/components/prisma-client/middleware) <span class="concept"></span>:
+`$use()` 方法添加了 [中间件](../../../concepts/components/prisma-client/middleware) <span class="concept"></span>:
 
 ```ts
 prisma.$use(async (params, next) => {
@@ -4739,27 +4737,27 @@ prisma.$use(async (params, next) => {
 
 #### <inlinecode>next</inlinecode>
 
-`next` represents the "next level" in the middleware stack, which could be the next middleware or the Prisma Query, depending on [where in the stack you are](../../concepts/components/prisma-client/middleware#running-order-and-the-middleware-stack).
+`next` 代表中间件堆栈中的“下一级”，可能是下一个中间件或 Prisma 查询，具体取决于[您在堆栈中的位置](../../concepts/components/prisma-client/middleware#running-order-and-the-middleware-stack).
 
 #### <inlinecode>params</inlinecode>
 
-`params` is an object with information to use in your middleware.
+`params` 是一个对象，其中包含要在中间件中使用的信息。
 
-| Parameter          | 描述                                                                                                    |
-| :----------------- | :------------------------------------------------------------------------------------------------------------- |
-| `action`           | The query type - for example, `create` or `findMany`.                                                          |
-| `args`             | Arguments that were passed into the query - for example, `where`, `data`, or `orderBy`                         |
-| `dataPath`         | Populated if you use the [fluent API](../../../concepts/components/prisma-client/relation-queries#fluent-api). |
-| `model`            | The model type - for example, `Post` or `User`.                                                                |
-| `runInTransaction` | Returns `true` if the query ran in the context of a [transaction](#transaction).                               |
+| 范围               | 描述                                                                                            |
+| :----------------- | :---------------------------------------------------------------------------------------------- |
+| `action`           | 查询类型 -例如，`create` 或 `findMany`。                                                        |
+| `args`             | 传递给查询的参数 -例如，`where`、`data` 或 `orderBy`                                            |
+| `dataPath`         | 如果您使用[fluent API](../../../concepts/components/prisma-client/relation-queries#fluent-api). |
+| `model`            | 模型类型 -例如，`Post` 或 `User`.                                                               |
+| `runInTransaction` | 如果查询在 [transaction](#transaction) 的上下文中运行，则返回 `true`。                          |
 
 <Tip>
 
-If you need the `model` property as a string, use: `String(params.model)`
+如果您需要 `model` 属性作为字符串，请使用：`String(params.model)`
 
 </Tip>
 
-Example parameter values:
+示例参数值：
 
 ```js
 {
@@ -4773,7 +4771,7 @@ Example parameter values:
 
 #### 参考
 
-`params` accepts the following type:
+`params` 接受以下类型：
 
 ```ts file=index.d.ts
 export type MiddlewareParams = {
@@ -4794,30 +4792,30 @@ export declare type ModelName = typeof ModelName[keyof typeof ModelName]
 
 #### 例子
 
-See [middleware examples](../../../concepts/components/prisma-client/middleware#examples) <span class="concept"></span>.
+参见：[中间件示例](../../../concepts/components/prisma-client/middleware#examples) <span class="concept"></span>.
 
 <!-- prettier-ignore -->
 ### <inlinecode>$executeRaw()</inlinecode>
 
-See: [Raw database access (`$executeRaw()`)](../../../concepts/components/prisma-client/raw-database-access#executeRaw).
+参见：[原始数据库访问 (`$executeRaw()`)](../../../concepts/components/prisma-client/raw-database-access#executeRaw).
 
 <!-- prettier-ignore -->
 ### <inlinecode>$queryRaw()</inlinecode>
 
-See: [Raw database access (`$queryRaw()`)](../../../concepts/components/prisma-client/raw-database-access#queryRaw).
+参见：[原始数据库访问 (`$queryRaw()`)](../../../concepts/components/prisma-client/raw-database-access#queryRaw).
 
 <!-- prettier-ignore -->
 ### <inlinecode>$transaction()</inlinecode>
 
-See: [Transactions](../../../concepts/components/prisma-client/transactions).
+参见：[事物](../../../concepts/components/prisma-client/transactions).
 
-## Utility types
+## 辅助类型
 
-Utility types are helper functions and types that live on the Prisma namespace. They are useful for keeping your application type safe.
+辅助类型是存在于 Prisma 命名空间中的辅助函数和类型。它们对于保持您的应用程序类型安全很有用。
 
 ### <inlinecode>Prisma.validator</inlinecode>
 
-The `validator` helps you create re-usable query parameters based on your schema models while making sure that the objects you create are valid. See also: [Using `Prisma.validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) <span class="concept"></span>
+`validator` 可帮助您根据架构模型创建可重用的查询参数，同时确保您创建的对象有效。另见：[使用 `Prisma.validator`](../../concepts/components/prisma-client/advanced-type-safety/prisma-validator) <span class="concept"></span>
 
 #### 参考
 
@@ -4842,7 +4840,7 @@ export const type: unique symbol
 
 #### 例子
 
-The following example shows how you can extract a `create` operation into a custom function for re-use and accepting form data:
+以下示例显示了如何将 `create` 操作提取到自定义函数中以重新使用和接受表单数据：
 
 ```ts
 import { Prisma } from '@prisma/client'
